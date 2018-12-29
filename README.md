@@ -44,7 +44,7 @@ If the solution does not conform to this structure you will have to update it to
 To add SixLabors.Standards as a submodule of your project. In the project repository type:
 
 ``` bash
-git submodule add https://github.com/SixLabors/SixLabors.Standards standards
+git submodule add https://github.com/SixLabors/Standards standards
 ```
 
 At this point, you’ll have a **standards** folder inside your project, but if you were to peek inside that folder, depending on your version of Git, you might see… nothing.
