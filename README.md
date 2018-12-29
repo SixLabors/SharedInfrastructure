@@ -49,7 +49,7 @@ git submodule add https://github.com/SixLabors/Standards standards
 
 At this point, you’ll have a **standards** folder inside your project, but if you were to peek inside that folder, depending on your version of Git, you might see… nothing.
 
-Newer versions of Git will do this automatically, but older versions will require you to explicitly tell Git to download the contents of rock:
+Newer versions of Git will do this automatically, but older versions will require you to explicitly tell Git to download the contents of **standards**:
 
 ``` bash
 git submodule update --init --recursive
