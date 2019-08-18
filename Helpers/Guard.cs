@@ -12,7 +12,7 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters.
     /// </summary>
     [DebuggerStepThrough]
-    internal static class Guard
+    internal static partial class Guard
     {
         /// <summary>
         /// Ensures that the value is not null.

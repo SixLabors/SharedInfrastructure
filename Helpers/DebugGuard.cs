@@ -11,7 +11,7 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters for a DEBUG build.
     /// </summary>
     [DebuggerStepThrough]
-    internal static class DebugGuard
+    internal static partial class DebugGuard
     {
        /// <summary>
         /// Ensures that the value is not null.
