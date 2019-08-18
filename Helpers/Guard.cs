@@ -67,7 +67,7 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [DebuggerStepThrough]
         public static void MustBeLessThan<TValue>(TValue value, TValue max, string parameterName)
-                    where TValue : IComparable<TValue>
+            where TValue : IComparable<TValue>
         {
             if (value.CompareTo(max) >= 0)
             {
@@ -89,7 +89,7 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [DebuggerStepThrough]
         public static void MustBeLessThanOrEqualTo<TValue>(TValue value, TValue max, string parameterName)
-                    where TValue : IComparable<TValue>
+            where TValue : IComparable<TValue>
         {
             if (value.CompareTo(max) > 0)
             {
@@ -289,21 +289,15 @@ namespace SixLabors
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentException(string message, string parameterName)
-        {
+        private static void ThrowArgumentException(string message, string parameterName) =>
             throw new ArgumentException(message, parameterName);
-        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentOutOfRangeException(string parameterName, string message)
-        {
+        private static void ThrowArgumentOutOfRangeException(string parameterName, string message) =>
             throw new ArgumentOutOfRangeException(parameterName, message);
-        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentNullException(string parameterName)
-        {
+        private static void ThrowArgumentNullException(string parameterName) =>
             throw new ArgumentNullException(parameterName);
-        }
     }
 }
