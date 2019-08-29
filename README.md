@@ -1,11 +1,17 @@
 <h1 align="center">
 
-<img src="https://raw.githubusercontent.com/SixLabors/Branding/master/icons/org/sixlabors.512.png" alt="SixLabors.Standards" width="256"/>
+<img src="https://raw.githubusercontent.com/SixLabors/Branding/master/icons/org/sixlabors.512.png" alt="SixLabors.SharedInfrastructure" width="256"/>
 <br/>
-SixLabors.Standards
+SixLabors.SharedInfrastructure
 </h1>
 
-This repository contains the configuration and guidelines for automated linting of C# projects. It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into your solution.
+This repository contains:
+- Configuration and guidelines for automated linting of C# projects.
+- Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`)
+- SixLabors.snk to support strong-name signing of SixLabors assemblies
+- Centralized msbuild configuration and utilities for SixLabors projects (*Coming soon*)
+
+It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into your solution.
 
 ## Installation.
 
@@ -41,21 +47,21 @@ If the solution does not conform to this structure you will have to update it to
 
 ### Adding the Submodule
 
-To add SixLabors.Standards as a submodule of your project. In the project repository type:
+To add SixLabors.SharedInfrastructure as a submodule of your project. In the project repository type:
 
 ``` bash
-git submodule add https://github.com/SixLabors/Standards standards
+git submodule add https://github.com/SixLabors/SharedInfrastructure shared-infrastructure
 ```
 
-At this point, you’ll have a **standards** folder inside your project, but if you were to peek inside that folder, depending on your version of Git, you might see… nothing.
+At this point, you’ll have a **shared-infrastructure** folder inside your project, but if you were to peek inside that folder, depending on your version of Git, you might see… nothing.
 
-Newer versions of Git will do this automatically, but older versions will require you to explicitly tell Git to download the contents of **standards**:
+Newer versions of Git will do this automatically, but older versions will require you to explicitly tell Git to download the contents of **shared-infrastructure**:
 
 ``` bash
 git submodule update --init --recursive
 ```
 
-If everything looks good, you can commit this change and you’ll have a **standards** folder in your project repository with all the content from the SixLabors.Standards repository.
+If everything looks good, you can commit this change and you’ll have a **shared-infrastructure** folder in your project repository with all the content from the SixLabors.SharedInfrastructure repository.
 
 ### Updating the Submodule. 
 
@@ -113,12 +119,24 @@ These files tell StyleCop what rules to enforce and will have to be manually add
 
 ``` xml
 <PropertyGroup>
-  <CodeAnalysisRuleSet>..\..\standards\SixLabors.ruleset</CodeAnalysisRuleSet>
+  <CodeAnalysisRuleSet>..\..\shared-infrastructure\SixLabors.ruleset</CodeAnalysisRuleSet>
 </PropertyGroup>
 
 <ItemGroup>
-  <AdditionalFiles Include="..\..\standards\stylecop.json" />
+  <AdditionalFiles Include="..\..\shared-infrastructure\stylecop.json" />
 </ItemGroup>
 ```
 
 An up-to-date list of which StyleCop rules are implemented and which have code fixes can be found [here](https://dotnetanalyzers.github.io/StyleCopAnalyzers/).
+
+### Using internal C# utility classes
+
+To include internals like `Guard.cs` into your project you should add the following line to your `.csproj`:
+
+``` xml
+<ItemGroup>
+    <Compile Include="..\..\shared-infrastructure\**\*.cs" />
+</ItemGroup>
+```
+
+*Note:* This might change as soon as we include shared msbuild infrastructure elements (`.props` and `.targets`)
