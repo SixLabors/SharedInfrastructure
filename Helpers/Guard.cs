@@ -12,7 +12,7 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters.
     /// </summary>
     [DebuggerStepThrough]
-    internal static class Guard
+    internal static partial class Guard
     {
         /// <summary>
         /// Ensures that the value is not null.
@@ -22,7 +22,6 @@ namespace SixLabors
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void NotNull<TValue>(TValue value, string parameterName)
             where TValue : class
         {
@@ -40,7 +39,6 @@ namespace SixLabors
         /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void NotNullOrWhiteSpace(string value, string parameterName)
         {
             if (value is null)
@@ -65,9 +63,8 @@ namespace SixLabors
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeLessThan<TValue>(TValue value, TValue max, string parameterName)
-                    where TValue : IComparable<TValue>
+            where TValue : IComparable<TValue>
         {
             if (value.CompareTo(max) >= 0)
             {
@@ -87,9 +84,8 @@ namespace SixLabors
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeLessThanOrEqualTo<TValue>(TValue value, TValue max, string parameterName)
-                    where TValue : IComparable<TValue>
+            where TValue : IComparable<TValue>
         {
             if (value.CompareTo(max) > 0)
             {
@@ -109,7 +105,6 @@ namespace SixLabors
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeGreaterThan<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -133,7 +128,6 @@ namespace SixLabors
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeGreaterThanOrEqualTo<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -156,7 +150,6 @@ namespace SixLabors
         /// <paramref name="value"/> is less than the minimum value of greater than the maximum value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeBetweenOrEqualTo<TValue>(TValue value, TValue min, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -177,7 +170,6 @@ namespace SixLabors
         /// <paramref name="target"/> is false.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void IsTrue(bool target, string parameterName, string message)
         {
             if (!target)
@@ -197,7 +189,6 @@ namespace SixLabors
         /// <paramref name="target"/> is true.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void IsFalse(bool target, string parameterName, string message)
         {
             if (target)
@@ -217,7 +208,6 @@ namespace SixLabors
         /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeSizedAtLeast<T>(ReadOnlySpan<T> source, int minLength, string parameterName)
         {
             if (source.Length < minLength)
@@ -237,7 +227,6 @@ namespace SixLabors
         /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void MustBeSizedAtLeast<T>(Span<T> source, int minLength, string parameterName)
         {
             if (source.Length < minLength)
@@ -255,7 +244,6 @@ namespace SixLabors
         /// <param name="destination">The destination span.</param>
         /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void DestinationShouldNotBeTooShort<TSource, TDest>(
             ReadOnlySpan<TSource> source,
             Span<TDest> destination,
@@ -276,7 +264,6 @@ namespace SixLabors
         /// <param name="destination">The destination span.</param>
         /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [DebuggerStepThrough]
         public static void DestinationShouldNotBeTooShort<TSource, TDest>(
             Span<TSource> source,
             Span<TDest> destination,
@@ -289,21 +276,15 @@ namespace SixLabors
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentException(string message, string parameterName)
-        {
+        private static void ThrowArgumentException(string message, string parameterName) =>
             throw new ArgumentException(message, parameterName);
-        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentOutOfRangeException(string parameterName, string message)
-        {
+        private static void ThrowArgumentOutOfRangeException(string parameterName, string message) =>
             throw new ArgumentOutOfRangeException(parameterName, message);
-        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private static void ThrowArgumentNullException(string parameterName)
-        {
+        private static void ThrowArgumentNullException(string parameterName) =>
             throw new ArgumentNullException(parameterName);
-        }
     }
 }
