@@ -11,6 +11,9 @@
     <!--Call 'ConfigureAwait(false)'-->
     <Rule Id="RCS1090" Action="None" />
     
+    <!--XML comment analysis is disabled due to project configuration-->
+    <Rule Id="SA0001" Action="None" />
+
     <!--Using directive should appear within a namespace declaration-->
     <Rule Id="SA1200" Action="None" />
 
