@@ -7,7 +7,7 @@ SixLabors.SharedInfrastructure
 
 This repository contains:
 - Configuration and guidelines for automated linting of C# projects.
-- Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`)
+- Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `MathF`, and `HashCode`)
 - SixLabors.snk to support strong-name signing of SixLabors assemblies
 - Centralized msbuild configuration and utilities for SixLabors projects (*Coming soon*)
 
@@ -140,9 +140,18 @@ An up-to-date list of which StyleCop rules are implemented and which have code f
 
 ### Using internal C# utility classes
 
-To include internals like `Guard.cs` into your project you should add the following line to your `.csproj`:
+To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project you should add the following lines to your `.csproj`:
 
 ``` xml
+<!-- TODO: Include .NETSTANDARD2.1 when released-->
+<PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp2')) ">
+  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+</PropertyGroup>
+
+<PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp2.1')) ">
+  <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
+</PropertyGroup>
+
 <ItemGroup>
     <Compile Include="..\..\shared-infrastructure\**\*.cs" />
 </ItemGroup>
