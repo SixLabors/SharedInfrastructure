@@ -1,4 +1,4 @@
-﻿// Copyright (c) Six Labors and contributors.
+// Copyright (c) Six Labors and contributors.
 // Licensed under the Apache License, Version 2.0.
 
 using System.Runtime.CompilerServices;
@@ -6,13 +6,15 @@ using System.Runtime.CompilerServices;
 #if SUPPORTS_MATHF
 [assembly: TypeForwardedTo(typeof(System.MathF))]
 #else
+using System.Diagnostics.CodeAnalysis;
+
 namespace System
 {
     /// <summary>
     /// Provides single-precision floating point constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
     /// </summary>
     /// <remarks>MathF emulation on platforms that don't support it natively.</remarks>
-    // ReSharper disable InconsistentNaming
+    [ExcludeFromCodeCoverage]
     internal static class MathF
     {
         /// <summary>

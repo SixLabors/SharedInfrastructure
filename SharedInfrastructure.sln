@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedInfrastructure.Tests", "tests\SharedInfrastructure.Tests\SharedInfrastructure.Tests.csproj", "{1664B46A-D99F-4C66-9424-A3A17C926A4C}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedInfrastructure", "src\SharedInfrastructure\SharedInfrastructure.shproj", "{68A8CC40-6AED-4E96-B524-31B1158FDEEA}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\SharedInfrastructure\SharedInfrastructure.projitems*{68a8cc40-6aed-4e96-b524-31b1158fdeea}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1664B46A-D99F-4C66-9424-A3A17C926A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1664B46A-D99F-4C66-9424-A3A17C926A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1664B46A-D99F-4C66-9424-A3A17C926A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1664B46A-D99F-4C66-9424-A3A17C926A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDD6BE8E-01A1-4A70-AA7E-F1D64E8FA829}
+	EndGlobalSection
+EndGlobal

@@ -1,18 +1,19 @@
-﻿// Copyright (c) Six Labors and contributors.
+// Copyright (c) Six Labors and contributors.
 // Licensed under the Apache License, Version 2.0.
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace SixLabors
 {
     /// <summary>
-    /// Provides methods to protect against invalid parameters.
+    /// Provides methods to protect against invalid parameters for a DEBUG build.
     /// </summary>
     [DebuggerStepThrough]
-    internal static partial class Guard
+    [ExcludeFromCodeCoverage]
+    internal static partial class DebugGuard
     {
         /// <summary>
         /// Ensures that the value is not null.
@@ -21,7 +22,7 @@ namespace SixLabors
         /// <param name="parameterName">The name of the parameter that is to be checked.</param>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void NotNull<TValue>(TValue value, string parameterName)
             where TValue : class
         {
@@ -38,7 +39,7 @@ namespace SixLabors
         /// <param name="parameterName">Name of the parameter.</param>
         /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void NotNullOrWhiteSpace(string value, string parameterName)
         {
             if (value is null)
@@ -62,7 +63,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeLessThan<TValue>(TValue value, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -83,7 +84,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeLessThanOrEqualTo<TValue>(TValue value, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -104,7 +105,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeGreaterThan<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -127,7 +128,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeGreaterThanOrEqualTo<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -149,7 +150,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value of greater than the maximum value.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeBetweenOrEqualTo<TValue>(TValue value, TValue min, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
@@ -169,7 +170,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="target"/> is false.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void IsTrue(bool target, string parameterName, string message)
         {
             if (!target)
@@ -188,7 +189,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="target"/> is true.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void IsFalse(bool target, string parameterName, string message)
         {
             if (target)
@@ -207,7 +208,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeSizedAtLeast<T>(ReadOnlySpan<T> source, int minLength, string parameterName)
         {
             if (source.Length < minLength)
@@ -226,7 +227,7 @@ namespace SixLabors
         /// <exception cref="ArgumentException">
         /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
         /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void MustBeSizedAtLeast<T>(Span<T> source, int minLength, string parameterName)
         {
             if (source.Length < minLength)
@@ -243,7 +244,7 @@ namespace SixLabors
         /// <param name="source">The source span.</param>
         /// <param name="destination">The destination span.</param>
         /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void DestinationShouldNotBeTooShort<TSource, TDest>(
             ReadOnlySpan<TSource> source,
             Span<TDest> destination,
@@ -263,7 +264,7 @@ namespace SixLabors
         /// <param name="source">The source span.</param>
         /// <param name="destination">The destination span.</param>
         /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Conditional("DEBUG")]
         public static void DestinationShouldNotBeTooShort<TSource, TDest>(
             Span<TSource> source,
             Span<TDest> destination,

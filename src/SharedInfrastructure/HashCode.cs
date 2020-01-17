@@ -1,4 +1,4 @@
-﻿#pragma warning disable SA1636, SA1600, SA1503, SA1202, SA1101, SA1132, SA1309, SA1520, SA1108, SA1203, SA1028, SA1512, SA1308
+#pragma warning disable SA1636, SA1600, SA1503, SA1202, SA1101, SA1132, SA1309, SA1520, SA1108, SA1203, SA1028, SA1512, SA1308
 
 // SOURCE: https://github.com/dotnet/corefx/blob/master/src/Common/src/CoreLib/System/HashCode.cs
 
@@ -50,6 +50,7 @@ using System.Runtime.CompilerServices;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 
@@ -57,6 +58,7 @@ namespace System
 {
     // xxHash32 is used for the hash code.
     // https://github.com/Cyan4973/xxHash
+    [ExcludeFromCodeCoverage]
     internal struct HashCode
     {
 #pragma warning disable SA1311 // Static readonly fields should begin with upper-case letter
