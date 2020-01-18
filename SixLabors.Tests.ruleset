@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="BrandLink.Tests" ToolsVersion="15.0">
+<RuleSet Name="SixLabors.Tests" ToolsVersion="15.0">
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
 
     <!--https://github.com/dotnet/roslyn/issues/18117-->
@@ -10,7 +10,7 @@
 
     <!--Call 'ConfigureAwait(false)'-->
     <Rule Id="RCS1090" Action="None" />
-    
+
     <!--XML comment analysis is disabled due to project configuration-->
     <Rule Id="SA0001" Action="None" />
 
@@ -48,7 +48,7 @@
     <Rule Id="SA1601" Action="None" />
 
     <!--Comments should end with a period. I like this but there's 3000+ errors to fix in ImageSharp-->
-    <Rule Id="SA1629" Action="None" /> 
+    <Rule Id="SA1629" Action="None" />
 
     <!--A C# code file is missing a standard file header.-->
     <Rule Id="SA1633" Action="Warning" />
