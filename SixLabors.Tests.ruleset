@@ -36,6 +36,9 @@
     <!--Partial elements should be documented.-->
     <Rule Id="SA1601" Action="None" />
 
+    <!--Enumeration items should be documented.-->
+    <Rule Id="SA1602" Action="None" />
+
     <!--Constructor is missing documentation for one or more of its parameters.-->
     <Rule Id="SA1611" Action="None" />
 
