@@ -40,7 +40,7 @@
     <Rule Id="SA1611" Action="None" />
 
     <!--A generic C# element is missing documentation for one or more of its generic type parameters..-->
-    <Rule Id="SA1619" Action="None" />
+    <Rule Id="SA1618" Action="None" />
 
     <!--The XML documentation header for a C# constructor does not contain the appropriate summary text.-->
     <Rule Id="SA1642" Action="None" />
