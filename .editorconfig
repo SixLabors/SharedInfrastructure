@@ -372,4 +372,4 @@ csharp_style_var_for_built_in_types = false:silent
 csharp_style_var_when_type_is_apparent = true:warning
 csharp_style_var_elsewhere = false:warning
 
-csharp_prefer_simple_using_statement = false:warning
+csharp_prefer_simple_using_statement = false:silent
