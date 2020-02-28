@@ -14,5 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HashCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathF.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThrowHelper.cs" />
   </ItemGroup>
 </Project>
