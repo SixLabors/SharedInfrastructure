@@ -54,6 +54,42 @@ namespace SixLabors
         /// <param name="value">The target value, which should be validated.</param>
         /// <param name="max">The maximum value.</param>
         /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeLessThan(int value, int max, string parameterName)
+        {
+            if (value >= max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Ensures that the specified value is less than a maximum value.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeLessThan(long value, long max, string parameterName)
+        {
+            if (value >= max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Ensures that the specified value is less than a maximum value.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is greater than the maximum value.
@@ -65,6 +101,44 @@ namespace SixLabors
             if (value.CompareTo(max) >= 0)
             {
                 ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is less than or equal to a maximum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeLessThanOrEqualTo(int value, int max, string parameterName)
+        {
+            if (value > max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is less than or equal to a maximum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeLessThanOrEqualTo(long value, long max, string parameterName)
+        {
+            if (value > max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
             }
         }
 
@@ -96,6 +170,44 @@ namespace SixLabors
         /// <param name="value">The target value, which should be validated.</param>
         /// <param name="min">The minimum value.</param>
         /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeGreaterThan(int value, int min, string parameterName)
+        {
+            if (value <= min)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than a minimum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeGreaterThan(long value, long min, string parameterName)
+        {
+            if (value <= min)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than a minimum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
@@ -117,6 +229,44 @@ namespace SixLabors
         /// <param name="value">The target value, which should be validated.</param>
         /// <param name="min">The minimum value.</param>
         /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeGreaterThanOrEqualTo(int value, int min, string parameterName)
+        {
+            if (value < min)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than or equal to a minimum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeGreaterThanOrEqualTo(long value, long min, string parameterName)
+        {
+            if (value < min)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than or equal to a minimum value
+        /// and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
@@ -128,6 +278,46 @@ namespace SixLabors
             if (value.CompareTo(min) < 0)
             {
                 ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than or equal to a minimum value and less than
+        /// or equal to a maximum value and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value of greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeBetweenOrEqualTo(int value, int min, int max, string parameterName)
+        {
+            if (value < min || value > max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
+            }
+        }
+
+        /// <summary>
+        /// Verifies that the specified value is greater than or equal to a minimum value and less than
+        /// or equal to a maximum value and throws an exception if it is not.
+        /// </summary>
+        /// <param name="value">The target value, which should be validated.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <param name="parameterName">The name of the parameter that is to be checked.</param>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="value"/> is less than the minimum value of greater than the maximum value.
+        /// </exception>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void MustBeBetweenOrEqualTo(long value, long min, long max, string parameterName)
+        {
+            if (value < min || value > max)
+            {
+                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
             }
         }
 
