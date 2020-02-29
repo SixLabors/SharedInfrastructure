@@ -41,7 +41,6 @@ namespace SixLabors
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeLessThan<T>(T value, T max, string name)
-            where T : IComparable<T>
         {
             ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be less than {max}, was {value}");
         }
@@ -51,7 +50,6 @@ namespace SixLabors
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo<T>(T value, T maximum, string name)
-            where T : IComparable<T>
         {
             ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be less than or equal to {maximum}, was {value}");
         }
@@ -61,7 +59,6 @@ namespace SixLabors
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan<T>(T value, T minimum, string name)
-            where T : IComparable<T>
         {
             ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than {minimum}, was {value}");
         }
@@ -71,7 +68,6 @@ namespace SixLabors
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo<T>(T value, T minimum, string name)
-            where T : IComparable<T>
         {
             ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than or equal to {minimum}, was {value}");
         }
@@ -81,7 +77,6 @@ namespace SixLabors
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo<T>(T value, T minimum, T maximum, string name)
-            where T : IComparable<T>
         {
             ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be between or equal to {minimum} and {maximum}, was {value}");
         }
