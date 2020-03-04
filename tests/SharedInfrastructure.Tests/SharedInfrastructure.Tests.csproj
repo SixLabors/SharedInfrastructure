@@ -71,7 +71,26 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\SharedInfrastructure\Guard.Numeric.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Guard.Numeric.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
   
   <Import Project="..\..\src\SharedInfrastructure\SharedInfrastructure.projitems" Label="Shared" />
+  
+  <ItemGroup>
+    <None Update="C:\Users\Sergio\Documents\GitHub\ImageSharp\shared-infrastructure\src\SharedInfrastructure\Guard.Numeric.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Guard.Numeric.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 
 </Project>
