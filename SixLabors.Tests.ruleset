@@ -1,24 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="BrandLink.Tests" ToolsVersion="15.0">
+<RuleSet Name="SixLabors.Tests" ToolsVersion="15.0">
+  <!--Inherit basic rules-->
+  <Include Path="SixLabors.ruleset" Action="Default" />
+
+  <!--Additional rules-->
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
 
-    <!--https://github.com/dotnet/roslyn/issues/18117-->
-    <Rule Id="AD0001" Action="None" />
-
-    <!--Missing XML comment for publicly visible type or member-->
-    <Rule Id="CS1591" Action="None" />
-
-    <!--Call 'ConfigureAwait(false)'-->
-    <Rule Id="RCS1090" Action="None" />
-    
     <!--XML comment analysis is disabled due to project configuration-->
     <Rule Id="SA0001" Action="None" />
 
-    <!--Using directive should appear within a namespace declaration-->
-    <Rule Id="SA1200" Action="None" />
-
-    <!--Elements should be documented.-->
-    <Rule Id="SA1600" Action="None" />
+    <!--Parameter must follow comma.-->
+    <Rule Id="SA1115" Action="None" />
 
     <!--A field should not follow a method-->
     <Rule Id="SA1201" Action="None" />
@@ -38,20 +30,28 @@
     <!--Field should be private-->
     <Rule Id="SA1401" Action="None" />
 
-    <!--A C# code file contains more than one unique type.-->
-    <Rule Id="SA1402" Action="None" />
-
-    <!--The last statement in a multi-line C# initializer or list is missing a trailing comma.-->
-    <Rule Id="SA1413" Action="None" />
+    <!--Elements should be documented.-->
+    <Rule Id="SA1600" Action="None" />
 
     <!--Partial elements should be documented.-->
     <Rule Id="SA1601" Action="None" />
 
-    <!--Comments should end with a period. I like this but there's 3000+ errors to fix in ImageSharp-->
-    <Rule Id="SA1629" Action="None" /> 
+    <!--Enumeration items should be documented.-->
+    <Rule Id="SA1602" Action="None" />
 
-    <!--A C# code file is missing a standard file header.-->
-    <Rule Id="SA1633" Action="Warning" />
+    <!--Constructor is missing documentation for one or more of its parameters.-->
+    <Rule Id="SA1611" Action="None" />
 
+    <!--A generic C# element is missing documentation for one or more of its generic type parameters..-->
+    <Rule Id="SA1618" Action="None" />
+
+    <!--The XML documentation header for a C# constructor does not contain the appropriate summary text.-->
+    <Rule Id="SA1642" Action="None" />
+  </Rules>
+
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+
+      <!--Missing XML comment for publicly visible type or member-->
+    <Rule Id="CS1591" Action="None" />
   </Rules>
 </RuleSet>
