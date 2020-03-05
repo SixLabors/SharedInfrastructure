@@ -87,17 +87,17 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(int minLength, string parameterName)
         {
-            ThrowArgumentException($"Span-s must be at least of length {minLength}!", parameterName);
+            ThrowArgumentException($"Spans must be at least of length {minLength}!", parameterName);
         }
 
         /// <summary>
         /// Throws a new <see cref="ArgumentException"/>.
         /// </summary>
-        /// <param name="name">The argument name.</param>
         /// <param name="message">The message to include in the exception.</param>
+        /// <param name="name">The argument name.</param>
         /// <exception cref="ArgumentException">Thrown with <paramref name="message"/> and <paramref name="name"/>.</exception>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static void ThrowArgumentException(string name, string message)
+        public static void ThrowArgumentException(string message, string name)
         {
             throw new ArgumentException(message, name);
         }

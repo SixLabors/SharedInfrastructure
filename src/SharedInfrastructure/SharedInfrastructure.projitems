@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ExcludeFromCodeCoverageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Guard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HashCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InliningOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathF.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThrowHelper.cs" />
   </ItemGroup>
