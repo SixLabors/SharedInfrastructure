@@ -12,7 +12,9 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters for a DEBUG build.
     /// </summary>
     [DebuggerStepThrough]
+#pragma warning disable CS0436 // Type conflicts with imported type
     [ExcludeFromCodeCoverage]
+#pragma warning restore CS0436 // Type conflicts with imported type
     internal static partial class DebugGuard
     {
         /// <summary>

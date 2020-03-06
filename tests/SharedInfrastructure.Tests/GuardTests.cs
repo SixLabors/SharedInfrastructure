@@ -137,7 +137,7 @@ namespace SixLabors
                 Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeLessThan(value, max, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be less than {max}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be less than {max}, was {value}", exception.Message);
         }
 
         [Theory]
@@ -155,7 +155,7 @@ namespace SixLabors
                 Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeLessThanOrEqualTo(2, 1, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 2 must be less than or equal to 1.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be less than or equal to {1}, was {2}", exception.Message);
         }
 
         [Fact]
@@ -173,7 +173,7 @@ namespace SixLabors
                 Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeGreaterThan(value, min, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be greater than {min}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be greater than {min}, was {value}", exception.Message);
         }
 
         [Theory]
@@ -191,7 +191,7 @@ namespace SixLabors
                 Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeGreaterThanOrEqualTo(1, 2, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 1 must be greater than or equal to 2.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be greater than or equal to {2}, was {1}", exception.Message);
         }
 
         [Theory]
@@ -212,7 +212,7 @@ namespace SixLabors
                 Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeBetweenOrEqualTo(value, min, max, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be greater than or equal to {min} and less than or equal to {max}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be between or equal to {min} and {max}, was {value}", exception.Message);
         }
 
         [Theory]

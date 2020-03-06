@@ -32,7 +32,7 @@ for (var i = 0; i < types.Length; i++)
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
-        [MethodImpl(InliningOptions.ShortMethod)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeLessThan(<#=T#> value, <#=T#> max, string parameterName)
         {
             if (value >= max)
@@ -51,7 +51,7 @@ for (var i = 0; i < types.Length; i++)
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is greater than the maximum value.
         /// </exception>
-        [MethodImpl(InliningOptions.ShortMethod)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeLessThanOrEqualTo(<#=T#> value, <#=T#> max, string parameterName)
         {
             if (value > max)
@@ -70,7 +70,7 @@ for (var i = 0; i < types.Length; i++)
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
-        [MethodImpl(InliningOptions.ShortMethod)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeGreaterThan(<#=T#> value, <#=T#> min, string parameterName)
         {
             if (value <= min)
@@ -89,7 +89,7 @@ for (var i = 0; i < types.Length; i++)
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value.
         /// </exception>
-        [MethodImpl(InliningOptions.ShortMethod)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeGreaterThanOrEqualTo(<#=T#> value, <#=T#> min, string parameterName)
         {
             if (value < min)
@@ -109,7 +109,7 @@ for (var i = 0; i < types.Length; i++)
         /// <exception cref="ArgumentException">
         /// <paramref name="value"/> is less than the minimum value of greater than the maximum value.
         /// </exception>
-        [MethodImpl(InliningOptions.ShortMethod)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeBetweenOrEqualTo(<#=T#> value, <#=T#> min, <#=T#> max, string parameterName)
         {
             if (value < min || value > max)

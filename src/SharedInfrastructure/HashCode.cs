@@ -57,7 +57,9 @@ namespace System
 {
     // xxHash32 is used for the hash code.
     // https://github.com/Cyan4973/xxHash
+#pragma warning disable CS0436 // Type conflicts with imported type
     [ExcludeFromCodeCoverage]
+#pragma warning restore CS0436 // Type conflicts with imported type
     internal struct HashCode
     {
 #pragma warning disable SA1311 // Static readonly fields should begin with upper-case letter
