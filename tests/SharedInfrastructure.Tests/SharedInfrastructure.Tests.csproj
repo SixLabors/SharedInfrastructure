@@ -10,21 +10,21 @@
 
   <!--
     https://apisof.net/
-    +===================+=======+==========+=====================+=============+=================+====================+==============+
-    | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE |
-    +===================+=======+==========+=====================+=============+=================+====================+==============+
-    | netcoreapp3.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |
-    | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |
-    | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |
-    | netstandard2.1    |   Y   |    Y     |         N           |      Y      |        Y        |        N           |      Y       |
-    | netstandard2.0    |   N   |    N     |         N           |      N      |        N        |        N           |      Y       |
-    | netstandard1.3    |   N   |    N     |         N           |      N      |        N        |        N           |      N       |
-    | net472            |   N   |    N     |         Y           |      N      |        N        |        N           |      Y       |
-    +===================+=======+==========+=====================+=============+=================+====================+==============+
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|
+    | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE | HOTPATH |
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|
+    | netcoreapp3.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |
+    | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |    N    |
+    | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |
+    | netstandard2.1    |   Y   |    Y     |         N           |      Y      |        Y        |        N           |      Y       |    N    |
+    | netstandard2.0    |   N   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |
+    | netstandard1.3    |   N   |    N     |         N           |      N      |        N        |        N           |      N       |    N    |
+    | net472            |   N   |    N     |         Y           |      N      |        N        |        N           |      Y       |    N    |
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|
     -->
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_RUNTIME_INTRINSICS;SUPPORTS_CODECOVERAGE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_RUNTIME_INTRINSICS;SUPPORTS_CODECOVERAGE;SUPPORTS_HOTPATH</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
     <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_CODECOVERAGE</DefineConstants>
@@ -52,14 +52,10 @@
     <PackageReference Include="System.Buffers" Version="4.5.0" />
     <PackageReference Include="System.Memory" Version="4.5.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="1.2.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
@@ -71,7 +67,32 @@
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <Compile Include="..\..\src\SharedInfrastructure\Guard.Numeric.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Guard.Numeric.tt</DependentUpon>
+    </Compile>
+  </ItemGroup> 
+ 
+  <ItemGroup>
+    <None Update="..\..\src\SharedInfrastructure\Guard.Numeric.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Guard.Numeric.cs</LastGenOutput>
+    </None>
+  </ItemGroup> 
+ 
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup> 
+ 
   <Import Project="..\..\src\SharedInfrastructure\SharedInfrastructure.projitems" Label="Shared" />
 
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
+
+  <PropertyGroup>
+   <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
 </Project>

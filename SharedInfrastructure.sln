@@ -9,6 +9,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedInfrastructure", "src
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\SharedInfrastructure\SharedInfrastructure.projitems*{1664b46a-d99f-4c66-9424-a3a17c926a4c}*SharedItemsImports = 5
 		src\SharedInfrastructure\SharedInfrastructure.projitems*{68a8cc40-6aed-4e96-b524-31b1158fdeea}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

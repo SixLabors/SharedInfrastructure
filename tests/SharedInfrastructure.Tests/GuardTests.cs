@@ -22,7 +22,7 @@ namespace SixLabors
         [Fact]
         public void NotNull_WhenNotNull()
         {
-            Foo foo = new Foo();
+            var foo = new Foo();
             Guard.NotNull(foo, nameof(foo));
         }
 
@@ -133,13 +133,11 @@ namespace SixLabors
         [InlineData(1, 1)]
         public void MustBeLessThan_IsGreaterOrEqual_ThrowsNoException(int value, int max)
         {
-            ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.MustBeLessThan(value, max, "myParamName");
-            });
+            ArgumentOutOfRangeException exception =
+                Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeLessThan(value, max, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be less than {max}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be less than {max}, was {value}", exception.Message);
         }
 
         [Theory]
@@ -153,13 +151,11 @@ namespace SixLabors
         [Fact]
         public void MustBeLessThanOrEqualTo_IsGreater_ThrowsNoException()
         {
-            ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.MustBeLessThanOrEqualTo(2, 1, "myParamName");
-            });
+            ArgumentOutOfRangeException exception =
+                Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeLessThanOrEqualTo(2, 1, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 2 must be less than or equal to 1.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be less than or equal to {1}, was {2}", exception.Message);
         }
 
         [Fact]
@@ -173,13 +169,11 @@ namespace SixLabors
         [InlineData(1, 1)]
         public void MustBeGreaterThan_IsLessOrEqual_ThrowsNoException(int value, int min)
         {
-            ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.MustBeGreaterThan(value, min, "myParamName");
-            });
+            ArgumentOutOfRangeException exception =
+                Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeGreaterThan(value, min, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be greater than {min}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be greater than {min}, was {value}", exception.Message);
         }
 
         [Theory]
@@ -193,13 +187,11 @@ namespace SixLabors
         [Fact]
         public void MustBeGreaterThanOrEqualTo_IsLess_ThrowsNoException()
         {
-            ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.MustBeGreaterThanOrEqualTo(1, 2, "myParamName");
-            });
+            ArgumentOutOfRangeException exception =
+                Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeGreaterThanOrEqualTo(1, 2, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 1 must be greater than or equal to 2.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be greater than or equal to {2}, was {1}", exception.Message);
         }
 
         [Theory]
@@ -216,13 +208,11 @@ namespace SixLabors
         [InlineData(4, 1, 3)]
         public void MustBeBetweenOrEqualTo_IsLessOrGreater_ThrowsNoException(int value, int min, int max)
         {
-            ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                Guard.MustBeBetweenOrEqualTo(value, min, max, "myParamName");
-            });
+            ArgumentOutOfRangeException exception =
+                Assert.Throws<ArgumentOutOfRangeException>(() => Guard.MustBeBetweenOrEqualTo(value, min, max, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value {value} must be greater than or equal to {min} and less than or equal to {max}.", exception.Message);
+            Assert.Contains($"Parameter \"myParamName\" ({typeof(int)}) must be between or equal to {min} and {max}, was {value}", exception.Message);
         }
 
         [Theory]
@@ -236,13 +226,11 @@ namespace SixLabors
         [Fact]
         public void MustBeSizedAtLeast_Array_LengthIsLess_ThrowsException()
         {
-            ArgumentException exception = Assert.Throws<ArgumentException>(() =>
-            {
-                Guard.MustBeSizedAtLeast<int>(new int[] { 1, 2 }, 3, "myParamName");
-            });
+            ArgumentException exception =
+                Assert.Throws<ArgumentException>(() => Guard.MustBeSizedAtLeast<int>(new int[] { 1, 2 }, 3, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains("The size must be at least 3", exception.Message);
+            Assert.Contains("Spans must be at least of length 3", exception.Message);
         }
     }
 }
