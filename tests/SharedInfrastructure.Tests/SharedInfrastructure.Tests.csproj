@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;netcoreapp2.0;net472;net46</TargetFrameworks>
@@ -69,30 +69,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\src\SharedInfrastructure\Guard.Numeric.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Guard.Numeric.tt</DependentUpon>
-    </Compile>
-  </ItemGroup> 
- 
-  <ItemGroup>
-    <None Update="..\..\src\SharedInfrastructure\Guard.Numeric.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Guard.Numeric.cs</LastGenOutput>
-    </None>
-  </ItemGroup> 
- 
-  <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup> 
- 
+  </ItemGroup>
+
   <Import Project="..\..\src\SharedInfrastructure\SharedInfrastructure.projitems" Label="Shared" />
 
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TextTemplating\Microsoft.TextTemplating.targets" />
-
-  <PropertyGroup>
-   <TransformOnBuild>true</TransformOnBuild>
-    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
-  </PropertyGroup>
 </Project>

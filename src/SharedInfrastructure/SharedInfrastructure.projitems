@@ -12,13 +12,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)DebugGuard.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExcludeFromCodeCoverageAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Guard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Guard.Numeric.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HashCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MathF.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThrowHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Guard.Numeric.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
+    <None Include="$(MSBuildThisFileDirectory)Guard.Numeric.tt.bak">
+      <!-- <Generator>TextTemplatingFileGenerator</Generator> -->
     </None>
   </ItemGroup>
 </Project>
