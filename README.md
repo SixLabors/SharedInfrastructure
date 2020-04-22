@@ -8,7 +8,7 @@ SixLabors.SharedInfrastructure
 This repository contains:
 - Configuration and guidelines for automated linting of C# projects.
 - Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `MathF`, and `HashCode`)
-- SixLabors.snk to support strong-name signing of SixLabors assemblies
+- `SixLabors.snk` to support strong-name signing of SixLabors assemblies
 - Centralized msbuild configuration and utilities for SixLabors projects (*Coming soon*)
 
 It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into Six Labors solutions.
@@ -140,21 +140,34 @@ An up-to-date list of which StyleCop rules are implemented and which have code f
 
 ### Using internal C# utility classes
 
-To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project you should add the following lines to your `.csproj`:
+To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project you should add configuration like the following to your `.csproj`:
 
 ``` xml
-<!-- TODO: Include .NETSTANDARD2.1 when released-->
-<PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp2')) ">
-  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_RUNTIME_INTRINSICS;SUPPORTS_CODECOVERAGE;SUPPORTS_HOTPATH</DefineConstants>
 </PropertyGroup>
 
-<PropertyGroup Condition=" $(TargetFramework.StartsWith('netcoreapp2.1')) ">
-  <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
+<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_CODECOVERAGE</DefineConstants>
 </PropertyGroup>
 
-<ItemGroup>
-    <Compile Include="..\..\shared-infrastructure\**\*.cs" />
-</ItemGroup>
-```
+<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_CODECOVERAGE</DefineConstants>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_CODECOVERAGE</DefineConstants>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+  <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_CODECOVERAGE</DefineConstants>
+</PropertyGroup>
+```  
+  
+And add the `SharedInfrastructure.shproj` as a project dependency.
 
 *Note:* This might change as soon as we include shared msbuild infrastructure elements (`.props` and `.targets`)
