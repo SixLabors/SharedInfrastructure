@@ -1,5 +1,5 @@
 // Copyright (c) Six Labors and contributors.
-// Licensed under the GNU Affero General Public License, v3.
+// Licensed under the GNU Affero General Public License, Version 3.
 
 using System;
 using System.Runtime.CompilerServices;
