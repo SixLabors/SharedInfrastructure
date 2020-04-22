@@ -11,7 +11,7 @@ This repository contains:
 - SixLabors.snk to support strong-name signing of SixLabors assemblies
 - Centralized msbuild configuration and utilities for SixLabors projects (*Coming soon*)
 
-It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into your solution.
+It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into Six Labors solutions.
 
 ## Installation.
 
