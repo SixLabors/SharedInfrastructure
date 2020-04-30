@@ -7,6 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedInfrastructure.Tests"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedInfrastructure", "src\SharedInfrastructure\SharedInfrastructure.shproj", "{68A8CC40-6AED-4E96-B524-31B1158FDEEA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27502888-A75B-4BCB-8D19-C81198AEF7C7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+		SixLabors.ruleset = SixLabors.ruleset
+		SixLabors.snk = SixLabors.snk
+		SixLabors.Tests.ruleset = SixLabors.Tests.ruleset
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\SharedInfrastructure\SharedInfrastructure.projitems*{1664b46a-d99f-4c66-9424-a3a17c926a4c}*SharedItemsImports = 5
