@@ -10,7 +10,7 @@
     "documentationRules": {
       "xmlHeader": false,
       "documentInternalElements": false,
-      "copyrightText": "Copyright (c) Six Labors and contributors.\nLicensed under the GNU Affero General Public License, Version 3."
+      "copyrightText": "Copyright (c) Six Labors.\nLicensed under the Apache License, Version 2.0."
     }
   }
 }
