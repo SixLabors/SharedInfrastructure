@@ -35,10 +35,12 @@ for (var i = 0; i < types.Length; i++)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeLessThan(<#=T#> value, <#=T#> max, string parameterName)
         {
-            if (value >= max)
+            if (value < max)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
         }
 
         /// <summary>
@@ -54,10 +56,12 @@ for (var i = 0; i < types.Length; i++)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeLessThanOrEqualTo(<#=T#> value, <#=T#> max, string parameterName)
         {
-            if (value > max)
+            if (value <= max)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
         }
 
         /// <summary>
@@ -73,10 +77,12 @@ for (var i = 0; i < types.Length; i++)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeGreaterThan(<#=T#> value, <#=T#> min, string parameterName)
         {
-            if (value <= min)
+            if (value > min)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
         }
 
         /// <summary>
@@ -92,10 +98,12 @@ for (var i = 0; i < types.Length; i++)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeGreaterThanOrEqualTo(<#=T#> value, <#=T#> min, string parameterName)
         {
-            if (value < min)
+            if (value >= min)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
         }
 
         /// <summary>
@@ -112,10 +120,12 @@ for (var i = 0; i < types.Length; i++)
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeBetweenOrEqualTo(<#=T#> value, <#=T#> min, <#=T#> max, string parameterName)
         {
-            if (value < min || value > max)
+            if (value >= min && value <= max)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
         }
 <#
 }
