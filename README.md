@@ -5,6 +5,14 @@
 SixLabors.SharedInfrastructure
 </h1>
 
+<div align="center">
+
+[![Build Status](https://img.shields.io/github/workflow/status/SixLabors/SharedInfrastructure/Build/master)](https://github.com/SixLabors/SharedInfrastructure/actions)
+[![Code coverage](https://codecov.io/gh/SixLabors/SharedInfrastructure/branch/master/graph/badge.svg)](https://codecov.io/gh/SixLabors/SharedInfrastructure)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+</div>
+
 This repository contains:
 - Configuration and guidelines for automated linting of C# projects.
 - Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `MathF`, and `HashCode`)
@@ -143,29 +151,61 @@ An up-to-date list of which StyleCop rules are implemented and which have code f
 To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project you should add configuration like the following to your `.csproj`:
 
 ``` xml
-<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_RUNTIME_INTRINSICS;SUPPORTS_CODECOVERAGE;SUPPORTS_HOTPATH</DefineConstants>
-</PropertyGroup>
+  <!--
+    https://apisof.net/
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========+============|
+    | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE | HOTPATH | CREATESPAN |
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
+    | netcoreapp3.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
+    | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
+    | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      Y     |
+    | netstandard2.1    |   Y   |    Y     |         N           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
+    | netstandard2.0    |   N   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      N     |
+    | netstandard1.3    |   N   |    N     |         N           |      N      |        N        |        N           |      N       |    N    |      N     |
+    | net472            |   N   |    N     |         Y           |      N      |        N        |        N           |      Y       |    N    |      N     |
+    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
+    -->
 
-<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_CODECOVERAGE</DefineConstants>
-</PropertyGroup>
-
-<PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_CODECOVERAGE</DefineConstants>
-</PropertyGroup>
-
-<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_MATHF;SUPPORTS_HASHCODE;SUPPORTS_SPAN_STREAM;SUPPORTS_ENCODING_STRING;SUPPORTS_CODECOVERAGE</DefineConstants>
-</PropertyGroup>
-
-<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-</PropertyGroup>
-
-<PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-  <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS;SUPPORTS_CODECOVERAGE</DefineConstants>
-</PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_RUNTIME_INTRINSICS</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_HOTPATH</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
+    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
+  </PropertyGroup>
 ```  
   
 And add the `SharedInfrastructure.shproj` as a project dependency.

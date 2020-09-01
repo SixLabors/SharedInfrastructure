@@ -4,7 +4,7 @@
 using System;
 using Xunit;
 
-namespace SixLabors
+namespace SharedInfrastructure.Tests
 {
     public class MathFTests
     {
