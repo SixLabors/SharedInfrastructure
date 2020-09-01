@@ -5,8 +5,8 @@
             <DataCollector friendlyName="XPlat code coverage">
                 <Configuration>
                     <Format>lcov</Format>
-                    <Include>[SixLabors.*]*,[System.*]*</Include>
-                    <UseSourceLink>true</UseSourceLink>
+                    <Include>[SixLabors.*]*</Include>
+                    <UseSourceLink>false</UseSourceLink>
                 </Configuration>
             </DataCollector>
         </DataCollectors>
