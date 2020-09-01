@@ -9,7 +9,7 @@ namespace SixLabors
     /// <summary>
     /// Helper methods to throw exceptions
     /// </summary>
-    internal static class ThrowHelper
+    internal static partial class ThrowHelper
     {
         /// <summary>
         /// Throws an <see cref="ArgumentNullException"/> when <see cref="Guard.NotNull{TValue}"/> fails.
