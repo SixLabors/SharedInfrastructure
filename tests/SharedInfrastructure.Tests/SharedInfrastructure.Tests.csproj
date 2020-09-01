@@ -67,7 +67,7 @@
   <ItemGroup>
     <!--dotnet tools does not have an x86 runner. You have to use separate SDKs-->
     <!--https://github.com/actions/setup-dotnet/issues/72-->
-    <DotNetCliToolReference Update="dotnet-xunit" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
