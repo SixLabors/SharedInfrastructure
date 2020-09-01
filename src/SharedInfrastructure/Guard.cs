@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace SixLabors
@@ -12,9 +11,6 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters.
     /// </summary>
     [DebuggerStepThrough]
-#pragma warning disable CS0436 // Type conflicts with imported type
-    [ExcludeFromCodeCoverage]
-#pragma warning restore CS0436 // Type conflicts with imported type
     internal static partial class Guard
     {
         /// <summary>

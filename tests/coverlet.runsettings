@@ -5,8 +5,8 @@
             <DataCollector friendlyName="XPlat code coverage">
                 <Configuration>
                     <Format>lcov</Format>
-                    <Include>[SixLabors.*]*</Include>
-                    <UseSourceLink>false</UseSourceLink>
+                    <ExcludeByFile>**/tests/**/*.cs, **/**/*.Program.cs</ExcludeByFile>
+                    <IncludeTestAssembly>true</IncludeTestAssembly>
                 </Configuration>
             </DataCollector>
         </DataCollectors>
