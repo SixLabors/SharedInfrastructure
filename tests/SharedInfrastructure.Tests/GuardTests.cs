@@ -2,9 +2,10 @@
 // Licensed under the Apache License, Version 2.0.
 
 using System;
+using SixLabors;
 using Xunit;
 
-namespace SixLabors
+namespace SharedInfrastructure.Tests
 {
     public class GuardTests
     {

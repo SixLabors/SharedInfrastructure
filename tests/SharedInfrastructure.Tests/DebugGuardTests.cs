@@ -9,9 +9,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using SixLabors;
 using Xunit;
 
-namespace SixLabors
+namespace SharedInfrastructure.Tests
 {
     public class DebugGuardTests
     {

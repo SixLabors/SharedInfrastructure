@@ -14,9 +14,6 @@ namespace System
     /// Provides single-precision floating point constants and static methods for trigonometric, logarithmic, and other common mathematical functions.
     /// </summary>
     /// <remarks>MathF emulation on platforms that don't support it natively.</remarks>
-#pragma warning disable CS0436 // Type conflicts with imported type
-    [ExcludeFromCodeCoverage]
-#pragma warning restore CS0436 // Type conflicts with imported type
     internal static class MathF
     {
         /// <summary>

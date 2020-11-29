@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace SixLabors
@@ -12,9 +11,6 @@ namespace SixLabors
     /// Provides methods to protect against invalid parameters.
     /// </summary>
     [DebuggerStepThrough]
-#pragma warning disable CS0436 // Type conflicts with imported type
-    [ExcludeFromCodeCoverage]
-#pragma warning restore CS0436 // Type conflicts with imported type
     internal static partial class Guard
     {
         /// <summary>
@@ -28,10 +24,12 @@ namespace SixLabors
         public static void NotNull<TValue>(TValue value, string parameterName)
             where TValue : class
         {
-            if (value is null)
+            if (!(value is null))
             {
-                ThrowHelper.ThrowArgumentNullExceptionForNotNull(parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentNullExceptionForNotNull(parameterName);
         }
 
         /// <summary>
@@ -44,10 +42,12 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void NotNullOrWhiteSpace(string value, string parameterName)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                ThrowHelper.ThrowArgumentExceptionForNotNullOrWhitespace(value, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentExceptionForNotNullOrWhitespace(value, parameterName);
         }
 
         /// <summary>
@@ -64,10 +64,12 @@ namespace SixLabors
         public static void MustBeLessThan<TValue>(TValue value, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
-            if (value.CompareTo(max) >= 0)
+            if (value.CompareTo(max) < 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThan(value, max, parameterName);
         }
 
         /// <summary>
@@ -85,10 +87,12 @@ namespace SixLabors
         public static void MustBeLessThanOrEqualTo<TValue>(TValue value, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
-            if (value.CompareTo(max) > 0)
+            if (value.CompareTo(max) <= 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo(value, max, parameterName);
         }
 
         /// <summary>
@@ -106,10 +110,12 @@ namespace SixLabors
         public static void MustBeGreaterThan<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
-            if (value.CompareTo(min) <= 0)
+            if (value.CompareTo(min) > 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan(value, min, parameterName);
         }
 
         /// <summary>
@@ -127,10 +133,12 @@ namespace SixLabors
         public static void MustBeGreaterThanOrEqualTo<TValue>(TValue value, TValue min, string parameterName)
             where TValue : IComparable<TValue>
         {
-            if (value.CompareTo(min) < 0)
+            if (value.CompareTo(min) >= 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo(value, min, parameterName);
         }
 
         /// <summary>
@@ -149,10 +157,12 @@ namespace SixLabors
         public static void MustBeBetweenOrEqualTo<TValue>(TValue value, TValue min, TValue max, string parameterName)
             where TValue : IComparable<TValue>
         {
-            if (value.CompareTo(min) < 0 || value.CompareTo(max) > 0)
+            if (value.CompareTo(min) >= 0 && value.CompareTo(max) <= 0)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo(value, min, max, parameterName);
         }
 
         /// <summary>
@@ -168,10 +178,12 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void IsTrue(bool target, string parameterName, string message)
         {
-            if (!target)
+            if (target)
             {
-                ThrowHelper.ThrowArgumentException(message, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentException(message, parameterName);
         }
 
         /// <summary>
@@ -187,10 +199,12 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void IsFalse(bool target, string parameterName, string message)
         {
-            if (target)
+            if (!target)
             {
-                ThrowHelper.ThrowArgumentException(message, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentException(message, parameterName);
         }
 
         /// <summary>
@@ -206,10 +220,12 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeSizedAtLeast<T>(ReadOnlySpan<T> source, int minLength, string parameterName)
         {
-            if (source.Length < minLength)
+            if (source.Length >= minLength)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(minLength, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(minLength, parameterName);
         }
 
         /// <summary>
@@ -225,10 +241,12 @@ namespace SixLabors
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MustBeSizedAtLeast<T>(Span<T> source, int minLength, string parameterName)
         {
-            if (source.Length < minLength)
+            if (source.Length >= minLength)
             {
-                ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(minLength, parameterName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(minLength, parameterName);
         }
 
         /// <summary>
@@ -245,10 +263,12 @@ namespace SixLabors
             Span<TDest> destination,
             string destinationParamName)
         {
-            if (destination.Length < source.Length)
+            if (destination.Length >= source.Length)
             {
-                ThrowHelper.ThrowArgumentException("Destination span is too short!", destinationParamName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentException("Destination span is too short!", destinationParamName);
         }
 
         /// <summary>
@@ -265,10 +285,12 @@ namespace SixLabors
             Span<TDest> destination,
             string destinationParamName)
         {
-            if (destination.Length < source.Length)
+            if (destination.Length >= source.Length)
             {
-                ThrowHelper.ThrowArgumentException("Destination span is too short!", destinationParamName);
+                return;
             }
+
+            ThrowHelper.ThrowArgumentException("Destination span is too short!", destinationParamName);
         }
     }
 }
