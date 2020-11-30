@@ -49,6 +49,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{478B60EE
 		tests\Directory.Build.targets = tests\Directory.Build.targets
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "msbuild", "msbuild", "{F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{8EDAC650-9105-421F-8988-E3AE6EDF77F7}"
+	ProjectSection(SolutionItems) = preProject
+		msbuild\props\SixLabors.Global.props = msbuild\props\SixLabors.Global.props
+		msbuild\props\SixLabors.Src.props = msbuild\props\SixLabors.Src.props
+		msbuild\props\SixLabors.Tests.props = msbuild\props\SixLabors.Tests.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{A4111E2B-C16C-4029-92D0-A9F367AE1B20}"
+	ProjectSection(SolutionItems) = preProject
+		msbuild\targets\SixLabors.Global.targets = msbuild\targets\SixLabors.Global.targets
+		msbuild\targets\SixLabors.Src.targets = msbuild\targets\SixLabors.Src.targets
+		msbuild\targets\SixLabors.Tests.targets = msbuild\targets\SixLabors.Tests.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\SharedInfrastructure\SharedInfrastructure.projitems*{1664b46a-d99f-4c66-9424-a3a17c926a4c}*SharedItemsImports = 5
@@ -72,6 +88,9 @@ Global
 		{68A8CC40-6AED-4E96-B524-31B1158FDEEA} = {07706BC0-CA04-4558-A005-3F9FA7D9933C}
 		{91A98DCB-FA23-444B-865A-3734578F1C28} = {27502888-A75B-4BCB-8D19-C81198AEF7C7}
 		{B3C84CC9-D0F5-4D9F-93A8-D742A73F3674} = {91A98DCB-FA23-444B-865A-3734578F1C28}
+		{F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4} = {27502888-A75B-4BCB-8D19-C81198AEF7C7}
+		{8EDAC650-9105-421F-8988-E3AE6EDF77F7} = {F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}
+		{A4111E2B-C16C-4029-92D0-A9F367AE1B20} = {F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDD6BE8E-01A1-4A70-AA7E-F1D64E8FA829}
