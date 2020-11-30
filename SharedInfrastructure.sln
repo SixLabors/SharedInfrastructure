@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{27502888
 		ci-build.ps1 = ci-build.ps1
 		ci-test.ps1 = ci-test.ps1
 		codecov.yml = codecov.yml
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		LICENSE = LICENSE
 		README.md = README.md
 		SixLabors.ruleset = SixLabors.ruleset
@@ -35,10 +37,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{07706BC0-CA04-4558-A005-3F9FA7D9933C}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{478B60EE-3651-4B39-83BD-528C428AC628}"
 	ProjectSection(SolutionItems) = preProject
 		tests\coverlet.runsettings = tests\coverlet.runsettings
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\Directory.Build.targets = tests\Directory.Build.targets
 	EndProjectSection
 EndProject
 Global

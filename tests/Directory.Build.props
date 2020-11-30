@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <!--Disable config copy. This solution only.-->
+    <SixLaborsDisableConfigCopy>true</SixLaborsDisableConfigCopy>
+  </PropertyGroup>
+
+  <!-- Import the shared tests .props file -->
+  <Import Project="$(MSBuildThisFileDirectory)..\msbuild\props\SixLabors.Tests.props"/>
+  
+  <!-- Import the solution .props file. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props"/>
+
+</Project>

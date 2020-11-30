@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <!-- Import the shared src .props file -->
+  <Import Project="$(MSBuildThisFileDirectory)..\msbuild\props\SixLabors.Src.props"/>
+  
+  <!-- Import the solution .props file. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.props"/>
+
+</Project>
