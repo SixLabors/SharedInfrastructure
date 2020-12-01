@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <!-- Empty target so that `dotnet test` will work on the solution -->
+  <!-- https://github.com/Microsoft/vstest/issues/411 -->
+  <Target Name="VSTest" Condition="'$(IsTestProject)' == 'true'"/>
+
+  <ItemGroup>
+    <!-- Shared config files that have to exist at root level. -->
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes" />
+  </ItemGroup>
+
+  <!-- Copy the config files on src build. -->
+  <Target Name="SixLaborsCopyConfigFiles" BeforeTargets="Build" Condition="'$(SixLaborsDisableConfigCopy)' == ''">
+    <Copy SourceFiles="@(SixLaborsConfigFilesToCopy)"
+          SkipUnchangedFiles = "true"
+          DestinationFolder="$(SixLaborsSolutionDirectory)" />
+  </Target>
+
+</Project>

@@ -145,9 +145,7 @@ namespace SharedInfrastructure.Tests
 
         [Fact]
         public void MustBeLessThan_IsLess_ThrowsNoException()
-        {
-            DebugGuard.MustBeLessThan(0, 1, "myParamName");
-        }
+            => DebugGuard.MustBeLessThan(0, 1, "myParamName");
 
         [Theory]
         [InlineData(2, 1)]
@@ -165,9 +163,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(0, 1)]
         [InlineData(1, 1)]
         public void MustBeLessThanOrEqualTo_IsLessOrEqual_ThrowsNoException(int value, int max)
-        {
-            DebugGuard.MustBeLessThanOrEqualTo(value, max, "myParamName");
-        }
+            => DebugGuard.MustBeLessThanOrEqualTo(value, max, "myParamName");
 
         [Fact]
         public void MustBeLessThanOrEqualTo_IsGreater_ThrowsNoException()
@@ -180,9 +176,7 @@ namespace SharedInfrastructure.Tests
 
         [Fact]
         public void MustBeGreaterThan_IsGreater_ThrowsNoException()
-        {
-            DebugGuard.MustBeGreaterThan(2, 1, "myParamName");
-        }
+            => DebugGuard.MustBeGreaterThan(2, 1, "myParamName");
 
         [Theory]
         [InlineData(1, 2)]
@@ -200,9 +194,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(2, 1)]
         [InlineData(1, 1)]
         public void MustBeGreaterThanOrEqualTo_IsGreaterOrEqual_ThrowsNoException(int value, int min)
-        {
-            DebugGuard.MustBeGreaterThanOrEqualTo(value, min, "myParamName");
-        }
+            => DebugGuard.MustBeGreaterThanOrEqualTo(value, min, "myParamName");
 
         [Fact]
         public void MustBeGreaterThanOrEqualTo_IsLess_ThrowsNoException()
@@ -218,9 +210,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(new int[] { 1, 2 }, 1)]
         [InlineData(new int[] { 1, 2 }, 2)]
         public void MustBeSizedAtLeast_Array_LengthIsGreaterOrEqual_ThrowsNoException(int[] value, int minLength)
-        {
-            DebugGuard.MustBeSizedAtLeast<int>(value, minLength, "myParamName");
-        }
+            => DebugGuard.MustBeSizedAtLeast<int>(value, minLength, "myParamName");
 
         [Fact]
         public void MustBeSizedAtLeast_Array_LengthIsLess_ThrowsException()

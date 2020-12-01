@@ -32,9 +32,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Abs(float f)
-        {
-            return Math.Abs(f);
-        }
+            => Math.Abs(f);
 
         /// <summary>
         /// Returns the angle whose tangent is the quotient of two specified numbers.
@@ -54,9 +52,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Atan2(float y, float x)
-        {
-            return (float)Math.Atan2(y, x);
-        }
+            => (float)Math.Atan2(y, x);
 
         /// <summary>
         /// Returns the smallest integral value that is greater than or equal to the specified single-precision floating-point number.
@@ -70,9 +66,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Ceiling(float f)
-        {
-            return (float)Math.Ceiling(f);
-        }
+            => (float)Math.Ceiling(f);
 
         /// <summary>
         /// Returns the cosine of the specified angle.
@@ -84,9 +78,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Cos(float f)
-        {
-            return (float)Math.Cos(f);
-        }
+            => (float)Math.Cos(f);
 
         /// <summary>
         /// Returns e raised to the specified power.
@@ -99,9 +91,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Exp(float f)
-        {
-            return (float)Math.Exp(f);
-        }
+            => (float)Math.Exp(f);
 
         /// <summary>
         /// Returns the largest integer less than or equal to the specified single-precision floating-point number.
@@ -114,9 +104,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Floor(float f)
-        {
-            return (float)Math.Floor(f);
-        }
+            => (float)Math.Floor(f);
 
         /// <summary>
         /// Returns the larger of two single-precision floating-point numbers.
@@ -130,9 +118,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Max(float val1, float val2)
-        {
-            return Math.Max(val1, val2);
-        }
+            => Math.Max(val1, val2);
 
         /// <summary>
         /// Returns the smaller of two single-precision floating-point numbers.
@@ -146,9 +132,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Min(float val1, float val2)
-        {
-            return Math.Min(val1, val2);
-        }
+            => Math.Min(val1, val2);
 
         /// <summary>
         /// Returns a specified number raised to the specified power.
@@ -158,9 +142,7 @@ namespace System
         /// <returns>The number <paramref name="x" /> raised to the power <paramref name="y" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Pow(float x, float y)
-        {
-            return (float)Math.Pow(x, y);
-        }
+            => (float)Math.Pow(x, y);
 
         /// <summary>
         /// Rounds a single-precision floating-point value to the nearest integral value.
@@ -173,9 +155,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Round(float f)
-        {
-            return (float)Math.Round(f);
-        }
+            => (float)Math.Round(f);
 
         /// <summary>
         /// Rounds a single-precision floating-point value to the nearest integer.
@@ -192,9 +172,7 @@ namespace System
         /// <paramref name="mode" /> is not a valid value of <see cref="T:System.MidpointRounding" />.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Round(float f, MidpointRounding mode)
-        {
-            return (float)Math.Round(f, mode);
-        }
+            => (float)Math.Round(f, mode);
 
         /// <summary>
         /// Returns the sine of the specified angle.
@@ -207,9 +185,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Sin(float f)
-        {
-            return (float)Math.Sin(f);
-        }
+            => (float)Math.Sin(f);
 
         /// <summary>
         /// Returns the square root of a specified number.
@@ -224,9 +200,7 @@ namespace System
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Sqrt(float f)
-        {
-            return (float)Math.Sqrt(f);
-        }
+            => (float)Math.Sqrt(f);
     }
 }
 #endif

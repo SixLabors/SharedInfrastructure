@@ -125,9 +125,7 @@ namespace SharedInfrastructure.Tests
 
         [Fact]
         public void MustBeLessThan_IsLess_ThrowsNoException()
-        {
-            Guard.MustBeLessThan(0, 1, "myParamName");
-        }
+            => Guard.MustBeLessThan(0, 1, "myParamName");
 
         [Theory]
         [InlineData(2, 1)]
@@ -145,9 +143,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(0, 1)]
         [InlineData(1, 1)]
         public void MustBeLessThanOrEqualTo_IsLessOrEqual_ThrowsNoException(int value, int max)
-        {
-            Guard.MustBeLessThanOrEqualTo(value, max, "myParamName");
-        }
+            => Guard.MustBeLessThanOrEqualTo(value, max, "myParamName");
 
         [Fact]
         public void MustBeLessThanOrEqualTo_IsGreater_ThrowsNoException()
@@ -160,10 +156,7 @@ namespace SharedInfrastructure.Tests
         }
 
         [Fact]
-        public void MustBeGreaterThan_IsGreater_ThrowsNoException()
-        {
-            Guard.MustBeGreaterThan(2, 1, "myParamName");
-        }
+        public void MustBeGreaterThan_IsGreater_ThrowsNoException() => Guard.MustBeGreaterThan(2, 1, "myParamName");
 
         [Theory]
         [InlineData(1, 2)]
@@ -181,9 +174,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(2, 1)]
         [InlineData(1, 1)]
         public void MustBeGreaterThanOrEqualTo_IsGreaterOrEqual_ThrowsNoException(int value, int min)
-        {
-            Guard.MustBeGreaterThanOrEqualTo(value, min, "myParamName");
-        }
+            => Guard.MustBeGreaterThanOrEqualTo(value, min, "myParamName");
 
         [Fact]
         public void MustBeGreaterThanOrEqualTo_IsLess_ThrowsNoException()
@@ -200,9 +191,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(2, 1, 3)]
         [InlineData(3, 1, 3)]
         public void MustBeBetweenOrEqualTo_IsBetweenOrEqual_ThrowsNoException(int value, int min, int max)
-        {
-            Guard.MustBeBetweenOrEqualTo(value, min, max, "myParamName");
-        }
+            => Guard.MustBeBetweenOrEqualTo(value, min, max, "myParamName");
 
         [Theory]
         [InlineData(0, 1, 3)]
@@ -220,9 +209,7 @@ namespace SharedInfrastructure.Tests
         [InlineData(2, 1)]
         [InlineData(2, 2)]
         public void MustBeSizedAtLeast_Array_LengthIsGreaterOrEqual_ThrowsNoException(int valueLength, int minLength)
-        {
-            Guard.MustBeSizedAtLeast<int>(new int[valueLength], minLength, "myParamName");
-        }
+            => Guard.MustBeSizedAtLeast<int>(new int[valueLength], minLength, "myParamName");
 
         [Fact]
         public void MustBeSizedAtLeast_Array_LengthIsLess_ThrowsException()

@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{27502888
 		ci-build.ps1 = ci-build.ps1
 		ci-test.ps1 = ci-test.ps1
 		codecov.yml = codecov.yml
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		LICENSE = LICENSE
 		README.md = README.md
 		SixLabors.ruleset = SixLabors.ruleset
@@ -35,10 +37,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{07706BC0-CA04-4558-A005-3F9FA7D9933C}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{478B60EE-3651-4B39-83BD-528C428AC628}"
 	ProjectSection(SolutionItems) = preProject
 		tests\coverlet.runsettings = tests\coverlet.runsettings
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\Directory.Build.targets = tests\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "msbuild", "msbuild", "{F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{8EDAC650-9105-421F-8988-E3AE6EDF77F7}"
+	ProjectSection(SolutionItems) = preProject
+		msbuild\props\SixLabors.Global.props = msbuild\props\SixLabors.Global.props
+		msbuild\props\SixLabors.Src.props = msbuild\props\SixLabors.Src.props
+		msbuild\props\SixLabors.Tests.props = msbuild\props\SixLabors.Tests.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{A4111E2B-C16C-4029-92D0-A9F367AE1B20}"
+	ProjectSection(SolutionItems) = preProject
+		msbuild\targets\SixLabors.Global.targets = msbuild\targets\SixLabors.Global.targets
+		msbuild\targets\SixLabors.Src.targets = msbuild\targets\SixLabors.Src.targets
+		msbuild\targets\SixLabors.Tests.targets = msbuild\targets\SixLabors.Tests.targets
 	EndProjectSection
 EndProject
 Global
@@ -64,6 +88,9 @@ Global
 		{68A8CC40-6AED-4E96-B524-31B1158FDEEA} = {07706BC0-CA04-4558-A005-3F9FA7D9933C}
 		{91A98DCB-FA23-444B-865A-3734578F1C28} = {27502888-A75B-4BCB-8D19-C81198AEF7C7}
 		{B3C84CC9-D0F5-4D9F-93A8-D742A73F3674} = {91A98DCB-FA23-444B-865A-3734578F1C28}
+		{F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4} = {27502888-A75B-4BCB-8D19-C81198AEF7C7}
+		{8EDAC650-9105-421F-8988-E3AE6EDF77F7} = {F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}
+		{A4111E2B-C16C-4029-92D0-A9F367AE1B20} = {F8DA0585-5F98-48F6-9A68-5E26EDD3F1D4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDD6BE8E-01A1-4A70-AA7E-F1D64E8FA829}

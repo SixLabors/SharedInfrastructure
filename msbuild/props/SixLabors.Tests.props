@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <!-- Compilation and build location settings. -->
+  <PropertyGroup>
+    <SixLaborsProjectCategory>tests</SixLaborsProjectCategory>
+    <IsTestProject Condition="'$(IsTestProject)' == ''">true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <CodeAnalysisRuleSet Condition="'$(CodeAnalysisRuleSet)' == ''">$(MSBuildThisFileDirectory)..\..\SixLabors.Tests.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <!-- Package references and additional files which are consumed by test projects -->
+  <ItemGroup Condition="'$(IsTestProject)' == 'true'">
+    <!--
+      Setup-dotnet action does not have an x86 runner. You have to use separate SDKs
+      https://github.com/actions/setup-dotnet/issues/72
+    -->
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" IsImplicitlyDefined="true" />
+    <PackageReference Include="xunit" Version="2.4.1" IsImplicitlyDefined="true" />
+
+    <PackageReference Include="coverlet.collector"
+                      Version="3.0.0-preview.9"
+                      PrivateAssets="All"
+                      IsImplicitlyDefined="true"
+                      Condition="'$(codecov)' == 'true'"/>
+
+    <!-- Maximum compatible version for xunit with netcore 2.0 -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk"
+                      Version="16.2.0"
+                      IsImplicitlyDefined="true"
+                      Condition="'$(TargetFramework)' == 'netcoreapp2.0'"/>
+
+    <PackageReference Include="Microsoft.NET.Test.Sdk"
+                      Version="16.8.0"
+                      IsImplicitlyDefined="true"
+                      Condition="'$(TargetFramework)' != 'netcoreapp2.0'"/>
+
+    <!-- Maximum compatible version with net46 or net472-->
+    <PackageReference Include="xunit.runner.visualstudio"
+                      Version="2.4.1"
+                      IsImplicitlyDefined="true"
+                      Condition="'$(TargetFramework)' == 'net46' OR '$(TargetFramework)' == 'net472' OR '$(TargetFramework)' == 'netcoreapp2.0'" />
+
+    <PackageReference Include="xunit.runner.visualstudio"
+                      Version="2.4.3"
+                      IsImplicitlyDefined="true"
+                      Condition="'$(TargetFramework)' != 'net46' AND '$(TargetFramework)' != 'net472' AND '$(TargetFramework)' != 'netcoreapp2.0'" />
+  </ItemGroup>
+
+</Project>

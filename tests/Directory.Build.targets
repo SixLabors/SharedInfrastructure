@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <!-- Import the shared tests .targets file -->
+  <Import Project="$(MSBuildThisFileDirectory)..\msbuild\targets\SixLabors.Tests.targets"/>
+
+  <!-- Import the solution .targets file. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\Directory.Build.targets"/>
+
+</Project>
