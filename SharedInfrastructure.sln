@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{27502888
 		Directory.Build.targets = Directory.Build.targets
 		LICENSE = LICENSE
 		README.md = README.md
-		SixLabors.ruleset = SixLabors.ruleset
+		sixlabors.ruleset = sixlabors.ruleset
 		SixLabors.snk = SixLabors.snk
-		SixLabors.Tests.ruleset = SixLabors.Tests.ruleset
+		sixlabors.tests.ruleset = sixlabors.tests.ruleset
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
