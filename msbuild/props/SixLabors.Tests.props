@@ -6,7 +6,7 @@
     <SixLaborsProjectCategory>tests</SixLaborsProjectCategory>
     <IsTestProject Condition="'$(IsTestProject)' == ''">true</IsTestProject>
     <IsPackable>false</IsPackable>
-    <CodeAnalysisRuleSet Condition="'$(CodeAnalysisRuleSet)' == ''">$(MSBuildThisFileDirectory)..\..\SixLabors.Tests.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(CodeAnalysisRuleSet)' == ''">$(MSBuildThisFileDirectory)..\..\sixLabors.tests.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <!-- Package references and additional files which are consumed by test projects -->
