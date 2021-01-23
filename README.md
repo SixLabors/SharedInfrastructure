@@ -156,6 +156,7 @@ To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project 
     +===================+=======+==========+=====================+=============+=================+====================+==============+=========+============|
     | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE | HOTPATH | CREATESPAN |
     +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
+    | net5.0            |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
     | netcoreapp3.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
     | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
     | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      Y     |
@@ -166,7 +167,7 @@ To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project 
     +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
     -->
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1' OR '$(TargetFramework)' == 'net5.0'">
     <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
     <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
     <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
