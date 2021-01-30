@@ -73,7 +73,6 @@
     <IsOSX Condition="$([MSBuild]::IsOSPlatform('OSX'))">true</IsOSX>
     <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
     <IsFreeBSD Condition="$([MSBuild]::IsOSPlatform('FreeBSD'))">true</IsFreeBSD>
-    <IsNetCore31Compatible Condition="$([MSBuild]::IsTargetFrameworkCompatible($(TargetFramework),'netcoreapp3.1')) == 'True'">true</IsNetCore31Compatible>
   </PropertyGroup>
   <Choose>
     <When Condition="'$(IsWindows)'=='true'">
