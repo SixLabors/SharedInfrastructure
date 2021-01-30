@@ -73,6 +73,7 @@
     <IsOSX Condition="$([MSBuild]::IsOSPlatform('OSX'))">true</IsOSX>
     <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
     <IsFreeBSD Condition="$([MSBuild]::IsOSPlatform('FreeBSD'))">true</IsFreeBSD>
+    <IsNetCore31Compatible Condition="$([MSBuild]::IsTargetFrameworkCompatible($(TargetFramework),'netcoreapp3.1')) == 'True'">true</IsNetCore31Compatible>
   </PropertyGroup>
   <Choose>
     <When Condition="'$(IsWindows)'=='true'">
@@ -102,8 +103,7 @@
     +===================+=======+==========+=====================+=============+=================+====================+==============+=========+============|
     | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE | HOTPATH | CREATESPAN |
     +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
-    | netcoreapp3.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
-    | net5.0            |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
+    | >=netcoreapp3.1   |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
     | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
     | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      Y     |
     | netstandard2.1    |   Y   |    Y     |         N           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
@@ -153,7 +153,7 @@
         <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
       </PropertyGroup>
     </When>
-    <When Condition="'$(TargetFramework)' == 'netcoreapp3.1' OR '$(TargetFramework)' == 'net5.0'">
+    <When Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)','netcoreapp3.1'))">
       <!--NETCORE 3.1. NET5.0, and future versions will fallback to this as the closest target.-->
       <PropertyGroup>
         <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
