@@ -47,7 +47,7 @@
 
   <!-- Ensure deterministic builds work when triggered against individual projects. -->
   <!-- https://github.com/dotnet/roslyn/issues/37379#issuecomment-513371985 -->
-  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+  <ItemGroup Condition="'$(CI)' == 'true'">
     <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
   </ItemGroup>
 
