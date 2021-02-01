@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <!-- Add deterministic builds in CI .-->
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(SIXLABORS_DOCS_BUILD)' == ''">
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>

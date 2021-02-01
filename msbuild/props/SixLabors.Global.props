@@ -45,6 +45,12 @@
     <PackageOutputPath>$(BaseArtifactsPath)pkg/$(BaseArtifactsPathSuffix)/$(Configuration)/</PackageOutputPath>
   </PropertyGroup>
 
+  <!-- Ensure deterministic builds work when triggered against individual projects. -->
+  <!-- https://github.com/dotnet/roslyn/issues/37379#issuecomment-513371985 -->
+  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
+  </ItemGroup>
+
   <!-- Public key definition for signing assemblies. -->
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
