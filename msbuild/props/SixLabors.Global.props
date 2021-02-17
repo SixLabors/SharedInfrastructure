@@ -32,7 +32,6 @@
       https://api.nuget.org/v3/index.json;
       https://www.myget.org/F/sixlabors/api/v3/index.json;
       https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json;
-      https://f.feedz.io/marcorossignoli/coverletunofficial/nuget/index.json;
     </RestoreSources>
   </PropertyGroup>
 

@@ -19,7 +19,7 @@
     <PackageReference Include="xunit" Version="2.4.1" IsImplicitlyDefined="true" />
 
     <PackageReference Include="coverlet.collector"
-                      Version="3.0.0-preview.9"
+                      Version="3.0.2"
                       PrivateAssets="All"
                       IsImplicitlyDefined="true"
                       Condition="'$(codecov)' == 'true'"/>
