@@ -112,4 +112,16 @@
 *.pptx              diff=astextplain
 *.rtf               diff=astextplain
 *.svg               diff=astextplain
-*.jpg,*.jpeg,*.bmp,*.gif,*.png,*.tif,*.tiff,*.tga,*.webp,*.dds filter=lfs diff=lfs merge=lfs -text
+###############################################################################
+# Handle image files by git lfs
+###############################################################################
+*.jpg               filter=lfs diff=lfs merge=lfs -text
+*.jpeg              filter=lfs diff=lfs merge=lfs -text
+*.bmp               filter=lfs diff=lfs merge=lfs -text
+*.gif               filter=lfs diff=lfs merge=lfs -text
+*.png               filter=lfs diff=lfs merge=lfs -text
+*.tif               filter=lfs diff=lfs merge=lfs -text
+*.tiff              filter=lfs diff=lfs merge=lfs -text
+*.tga               filter=lfs diff=lfs merge=lfs -text
+*.webp              filter=lfs diff=lfs merge=lfs -text
+*.dds               filter=lfs diff=lfs merge=lfs -text
