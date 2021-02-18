@@ -26,7 +26,7 @@
   </ItemDefinitionGroup>
 
   <Target Name="GenerateInternalsVisibleTo"
-          BeforeTargets="CoreCompile"
+          BeforeTargets="BeforeCompile;CoreCompile"
           DependsOnTargets="PrepareForBuild;CoreGenerateInternalsVisibleTo"
           Condition="'@(InternalsVisibleTo)' != ''" />
 
