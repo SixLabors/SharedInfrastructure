@@ -17,7 +17,7 @@ This repository contains:
 - Configuration and guidelines for automated linting of C# projects.
 - Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `MathF`, and `HashCode`)
 - `SixLabors.snk` to support strong-name signing of SixLabors assemblies
-- Centralized msbuild configuration and utilities for SixLabors projects (*Coming soon*)
+- Centralized msbuild configuration and utilities for SixLabors projects
 
 It is designed to be installed as a [git submodule](https://blog.github.com/2016-02-01-working-with-submodules/) into Six Labors solutions.
 
@@ -79,135 +79,16 @@ git submodule update --init --recursive
 git submodule foreach git pull origin master
 ```
 
-### Wiring up the Linting Tools
+### Linting Tools
 
-There are three tools contained within the submodule that will help to automatically promote and enforce coding standards and consistancy:
+There are three tools contained within the submodule that will help to automatically promote and enforce coding standards and consistency:
 - [.gitattributes](https://git-scm.com/docs/gitattributes)
 - [.editorconfig](https://docs.microsoft.com/en-us/visualstudio/ide/create-portable-custom-editor-options?view=vs-2017)
-- [StyleCop Analyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers)
-
-### Gitattributes
-`.gitattributes` files are used to do things like specify separate merge strategies for individual files or directories in your project, tell Git how to diff non-text files, or have Git filter content before you check it into or out of Git. The default attributes are configured to safely allow cross platform development.
-
->**Note: `.gitattributes` relies on a [physical file path hierarchy](https://git-scm.com/docs/gitattributes) to work so after installing or updating the submodule you need to copy the `.gitattributes` file to the solution root before adding to Visual Studio.**
-
-#### EditorConfig 
-
-Settings in `.editorconfig` files enable you to maintain consistent coding styles and settings in a codebase, such as indent style, tab width, end of line characters, encoding, and more, regardless of the editor or IDE you use. For example, when coding in C#, if your codebase has a convention to prefer that indents always consist of five space characters, documents use UTF-8 encoding, and each line always ends with a CR/LF, you can configure an `.editorconfig` file to do that.
-
-Adding an `.editorconfig` file to your project or codebase does not convert existing styles to the new ones. For example, if you have indents in your file that are formatted with tabs, and you add an  `.editorconfig` file that indents with spaces, the indent characters are not automatically converted to spaces. However, any new lines of code are formatted according to the `.editorconfig` file. Additionally, if you format the document using  <kbd>Ctrl+K, Ctrl+E</kbd>), the settings in the `.editorconfig` file are applied to existing lines of code.
-
->**Note: `.editorconfig` relies on a [physical file path hierarchy](https://editorconfig.org/#file-location) to work so after installing or updating the submodule you need to copy the `.editorconfig` file to the solution root before adding to Visual Studio.**
-
-To add an `.editorconfig` file to your solution open the solution in Visual Studio. Select the solution node and right-click.
-
-From the menu bar, choose **Project > Add Existing Item**, or press <kbd>Shift+Alt+A</kbd>.
-
-The Add Existing Item dialog box opens. Use this to navigate to your new **shared-infrastructure** folder and select the `.editorconfig` file.
-
-An `.editorconfig` file appears in Solution Explorer, and it opens in the editor.
-
-![EditorConfig file in solution explorer.](images/editorconfig-in-solution-explorer.png)
-
-#### StyleCop Analyzers
-
-StyleCop Analyzers are Roslyn Analyzer that contain an implementation of the StyleCop rules using the .NET Compiler Platform. Where possible, code fixes are also provided to simplify the process of correcting violations.
-
-StyleCopAnalyzers can be installed using the NuGet command line or the NuGet Package Manager in Visual Studio 2019.
-
-Install using the command line:
-
-``` bash
-Install-Package StyleCop.Analyzers
-```
-
-Installing via the package manager:
-
-![stylecop analyzers-via-nuget](images/stylecop-analyzers-via-nuget.png)
-
-Once the Nuget package is installed you will should add the following configuration files to the **Solution Items** folder you created when installing the `.editorconfig` file so you can easily view the contents. 
-
-- `SixLabors.ruleset`
-- `SixLabors.Tests.ruleset`
-- `stylecop.json`
-
-These files tell StyleCop what rules to enforce and will have to be manually added to each project. **right-click > Edit [YOUR_PROJECT_NAME].csproj**
-
-``` xml
-<!--Use the 'SixLabors.Tests.ruleset' for your test projects-->
-<PropertyGroup>
-  <CodeAnalysisRuleSet>..\..\shared-infrastructure\SixLabors.ruleset</CodeAnalysisRuleSet>
-</PropertyGroup>
-
-<ItemGroup>
-  <AdditionalFiles Include="..\..\shared-infrastructure\stylecop.json" />
-</ItemGroup>
-```
-
-An up-to-date list of which StyleCop rules are implemented and which have code fixes can be found [here](https://dotnetanalyzers.github.io/StyleCopAnalyzers/).
-
-### Using internal C# utility classes
-
-To include internals like `Guard.cs`, `MathF`, and `HashCode` into your project you should add configuration like the following to your `.csproj`:
-
-``` xml
-  <!--
-    https://apisof.net/
-    +===================+=======+==========+=====================+=============+=================+====================+==============+=========+============|
-    | SUPPORTS          | MATHF | HASHCODE | EXTENDED_INTRINSICS | SPAN_STREAM | ENCODING_STRING | RUNTIME_INTRINSICS | CODECOVERAGE | HOTPATH | CREATESPAN |
-    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
-    | >=netcoreapp3.1   |   Y   |    Y     |         Y           |      Y      |        Y        |        Y           |      Y       |    Y    |      Y     |
-    | netcoreapp2.1     |   Y   |    Y     |         Y           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
-    | netcoreapp2.0     |   Y   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      Y     |
-    | netstandard2.1    |   Y   |    Y     |         N           |      Y      |        Y        |        N           |      Y       |    N    |      Y     |
-    | netstandard2.0    |   N   |    N     |         N           |      N      |        N        |        N           |      Y       |    N    |      N     |
-    | netstandard1.3    |   N   |    N     |         N           |      N      |        N        |        N           |      N       |    N    |      N     |
-    | net472            |   N   |    N     |         Y           |      N      |        N        |        N           |      Y       |    N    |      N     |
-    +===================+=======+==========+=====================+=============+=================+====================+==============+=========|============|
-    -->
-
-  <PropertyGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)','netcoreapp3.1'))">
-    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_RUNTIME_INTRINSICS</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_HOTPATH</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_MATHF</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_HASHCODE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_SPAN_STREAM</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
-    <DefineConstants>$(DefineConstants);SUPPORTS_EXTENDED_INTRINSICS</DefineConstants>
-    <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
-  </PropertyGroup>
-```  
+- [StyleCop Analyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers)  
   
-And add the `SharedInfrastructure.shproj` as a project dependency.
+These tools are automatically installed into your solution by referencing the `.props` and `.targets` files found in the [/msbuild](/msbuild) folder.
+  
+### MsBuild
 
-*Note:* This might change as soon as we include shared msbuild infrastructure elements (`.props` and `.targets`)
+Within the aforementioned folder there are separate `.props` and `.targets` files designed for shared, src, and test scenarios. These files control the build process and are responsible for automatically referencing all the required projects for versioning, linting and testing.  An example use case and installation can be found at the [ImageSharp](https://github.com/SixLabors/ImageSharp) repository.
+
