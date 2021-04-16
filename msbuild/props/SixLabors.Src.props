@@ -8,12 +8,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <!-- Add deterministic builds in CI .-->
-  <PropertyGroup Condition="'$(CI)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-  </PropertyGroup>
-
   <!-- Common NuGet package settings. -->
   <PropertyGroup>
     <Copyright>Copyright © Six Labors</Copyright>
@@ -22,22 +16,28 @@
     <VersionPrefix>0.0.1</VersionPrefix>
     <VersionPrefix Condition="'$(packageversion)' != ''">$(PackageVersion)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Deterministic settings. CI only .-->
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <!-- Package references and additional files which are consumed by src projects -->
-  <ItemGroup>
+  <!-- Package references and additional files which are consumed by src projects. CI Only -->
+  <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" IsImplicitlyDefined="true" />
     <PackageReference Include="MinVer" PrivateAssets="All" Version="2.3.1" IsImplicitlyDefined="true"/>
   </ItemGroup>
 
-  <!--MinVer Properties for versioning-->
-  <PropertyGroup>
+  <!--MinVer Properties for versioning. CI only-->
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerVerbosity>normal</MinVerVerbosity>
   </PropertyGroup>

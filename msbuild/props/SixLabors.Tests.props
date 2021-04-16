@@ -22,7 +22,7 @@
                       Version="3.0.2"
                       PrivateAssets="All"
                       IsImplicitlyDefined="true"
-                      Condition="'$(codecov)' == 'true'"/>
+                      Condition="'$(IsCodeCoverage)'=='true'"/>
 
     <!-- Maximum compatible version for xunit with netcore 2.0 -->
     <PackageReference Include="Microsoft.NET.Test.Sdk"
