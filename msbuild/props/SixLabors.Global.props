@@ -14,20 +14,14 @@
   <!-- Determined by environmental settings set in build-and-test.yml-->
   <PropertyGroup>
     <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
-    <IsCodeCoverage Condition="'$(codecov)' != ''">true</IsCodeCoverage>
+    <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
   </PropertyGroup>
-  <Choose>
-    <When Condition="'$(IsContinuousIntegration)'=='true'">
-      <PropertyGroup>
-        <DefineConstants>$(DefineConstants);ENV_CI</DefineConstants>
-      </PropertyGroup>
-    </When>
-    <When Condition="'$(IsCodeCoverage)'=='true'">
-      <PropertyGroup>
-        <DefineConstants>$(DefineConstants);ENV_CODECOV</DefineConstants>
-      </PropertyGroup>
-    </When>
-  </Choose>
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <DefineConstants>$(DefineConstants);ENV_CI</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(IsCodeCoverage)'=='true'">
+    <DefineConstants>$(DefineConstants);ENV_CODECOV</DefineConstants>
+  </PropertyGroup>
 
   <!--Define OS platform conditions and constants.
    https://docs.microsoft.com/en-us/visualstudio/msbuild/property-functions?view=vs-2019#msbuild-property-functions
