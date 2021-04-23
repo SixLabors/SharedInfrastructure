@@ -21,6 +21,16 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
+  <!-- 
+    Define Environmental conditionals. Determined by environmental settings set in build-and-test.yml 
+    These proeprties are defined 2X to ensure both MSBuild and Visual Studio (preprocessor directives)
+    can correctly detect them.
+    -->
+  <PropertyGroup>
+    <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
+    <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
+  </PropertyGroup>
+
   <!-- Deterministic settings. CI only .-->
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -30,16 +40,16 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <!-- Package references and additional files which are consumed by src projects. CI Only -->
-  <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" IsImplicitlyDefined="true" />
-    <PackageReference Include="MinVer" PrivateAssets="All" Version="2.3.1" IsImplicitlyDefined="true"/>
-  </ItemGroup>
-
   <!--MinVer Properties for versioning. CI only-->
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerVerbosity>normal</MinVerVerbosity>
   </PropertyGroup>
+
+  <!-- Package references and additional files which are consumed by src projects. CI Only -->
+  <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" IsImplicitlyDefined="true" />
+    <PackageReference Include="MinVer" PrivateAssets="All" Version="2.3.1" IsImplicitlyDefined="true"/>
+  </ItemGroup>
 
 </Project>

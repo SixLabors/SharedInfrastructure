@@ -10,12 +10,16 @@
     that is done by the file that imports us.
   -->
 
-  <!-- Define Environmental conditionals -->
-  <!-- Determined by environmental settings set in build-and-test.yml-->
+  <!-- 
+    Define Environmental conditionals. Determined by environmental settings set in build-and-test.yml 
+    These proeprties are defined 2X to ensure both MSBuild and Visual Studio (preprocessor directives)
+    can correctly detect them.
+    -->
   <PropertyGroup>
     <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
     <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <DefineConstants>$(DefineConstants);ENV_CI</DefineConstants>
   </PropertyGroup>
