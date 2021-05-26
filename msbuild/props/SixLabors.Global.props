@@ -154,6 +154,7 @@
         <DefineConstants>$(DefineConstants);SUPPORTS_ENCODING_STRING</DefineConstants>
         <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
         <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+        <DefineConstants>$(DefineConstants);SUPPORTS_BITOPERATIONS</DefineConstants>
       </PropertyGroup>
     </When>
     <When Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
@@ -186,6 +187,7 @@
         <DefineConstants>$(DefineConstants);SUPPORTS_CODECOVERAGE</DefineConstants>
         <DefineConstants>$(DefineConstants);SUPPORTS_HOTPATH</DefineConstants>
         <DefineConstants>$(DefineConstants);SUPPORTS_CREATESPAN</DefineConstants>
+        <DefineConstants>$(DefineConstants);SUPPORTS_BITOPERATIONS</DefineConstants>
       </PropertyGroup>
     </When>
   </Choose>
