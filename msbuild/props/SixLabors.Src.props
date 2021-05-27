@@ -49,7 +49,7 @@
   <!-- Package references and additional files which are consumed by src projects. CI Only -->
   <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" IsImplicitlyDefined="true" />
-    <PackageReference Include="MinVer" PrivateAssets="All" Version="2.3.1" IsImplicitlyDefined="true"/>
+    <PackageReference Include="MinVer" PrivateAssets="All" Version="2.5.0" IsImplicitlyDefined="true"/>
   </ItemGroup>
 
 </Project>

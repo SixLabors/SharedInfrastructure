@@ -171,7 +171,7 @@ namespace SharedInfrastructure.Tests
             ArgumentOutOfRangeException exception = Assert.Throws<ArgumentOutOfRangeException>(() => DebugGuard.MustBeLessThanOrEqualTo(2, 1, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 2 must be less than or equal to 1.", exception.Message);
+            Assert.Contains("Value 2 must be less than or equal to 1.", exception.Message);
         }
 
         [Fact]
@@ -203,7 +203,7 @@ namespace SharedInfrastructure.Tests
                 () => DebugGuard.MustBeGreaterThanOrEqualTo(1, 2, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"Value 1 must be greater than or equal to 2.", exception.Message);
+            Assert.Contains("Value 1 must be greater than or equal to 2.", exception.Message);
         }
 
         [Theory]
@@ -219,7 +219,7 @@ namespace SharedInfrastructure.Tests
                 () => DebugGuard.MustBeSizedAtLeast<int>(new int[] { 1, 2 }, 3, "myParamName"));
 
             Assert.Equal("myParamName", exception.ParamName);
-            Assert.Contains($"The size must be at least 3.", exception.Message);
+            Assert.Contains("The size must be at least 3.", exception.Message);
         }
     }
 }
