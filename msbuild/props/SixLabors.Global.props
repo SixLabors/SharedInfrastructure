@@ -62,7 +62,7 @@
 
   <!-- Compilation settings that explicitly differ from the Sdk.props/targets defaults  -->
   <PropertyGroup>
-    <LangVersion Condition="'$(LangVersion)' == ''">8.0</LangVersion>
+    <LangVersion Condition="'$(LangVersion)' == ''">9.0</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Features>strict;IOperation</Features>
     <HighEntropyVA>true</HighEntropyVA>
