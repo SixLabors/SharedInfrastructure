@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <!-- Shared config files that have to exist at root level. -->
-    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes;$(MSBuildThisFileDirectory)..\..\.codecov.yml;" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes;$(MSBuildThisFileDirectory)..\..\codecov.yml;" />
   </ItemGroup>
 
   <!-- Copy the config files on src build. -->
