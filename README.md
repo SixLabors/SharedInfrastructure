@@ -1,14 +1,14 @@
 <h1 align="center">
 
-<img src="https://raw.githubusercontent.com/SixLabors/Branding/master/icons/org/sixlabors.512.png" alt="SixLabors.SharedInfrastructure" width="256"/>
+<img src="https://raw.githubusercontent.com/SixLabors/Branding/main/icons/org/sixlabors.512.png" alt="SixLabors.SharedInfrastructure" width="256"/>
 <br/>
 SixLabors.SharedInfrastructure
 </h1>
 
 <div align="center">
 
-[![Build Status](https://img.shields.io/github/workflow/status/SixLabors/SharedInfrastructure/Build/master)](https://github.com/SixLabors/SharedInfrastructure/actions)
-[![Code coverage](https://codecov.io/gh/SixLabors/SharedInfrastructure/branch/master/graph/badge.svg)](https://codecov.io/gh/SixLabors/SharedInfrastructure)
+[![Build Status](https://img.shields.io/github/workflow/status/SixLabors/SharedInfrastructure/Build/main)](https://github.com/SixLabors/SharedInfrastructure/actions)
+[![Code coverage](https://codecov.io/gh/SixLabors/SharedInfrastructure/branch/main/graph/badge.svg)](https://codecov.io/gh/SixLabors/SharedInfrastructure)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>
@@ -76,7 +76,7 @@ Since the submodule is stored in a separate repository you may find at times upd
 
 ``` bash
 git submodule update --init --recursive
-git submodule foreach git pull origin master
+git submodule foreach git pull origin main
 ```
 
 ### Linting Tools
