@@ -41,23 +41,11 @@ jobs:
                       runtime: -x64
                       codecov: false
                     - os: windows-latest
-                      framework: netcoreapp2.0
-                      runtime: -x64
-                      codecov: false
-                    - os: windows-latest
                       framework: net472
                       runtime: -x64
                       codecov: false
                     - os: windows-latest
                       framework: net472
-                      runtime: -x86
-                      codecov: false
-                    - os: windows-latest
-                      framework: net46
-                      runtime: -x64
-                      codecov: false
-                    - os: windows-latest
-                      framework: net46
                       runtime: -x86
                       codecov: false
 
@@ -85,6 +73,15 @@ jobs:
                   path: ~/.nuget
                   key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.props', '**/*.targets') }}
                   restore-keys: ${{ runner.os }}-nuget-
+
+            - name: DotNet Setup
+              uses: actions/setup-dotnet@v1
+              with:
+                dotnet-version: |
+                  6.0.x
+                  5.0.x
+                  3.1.x
+                  2.1.x
 
             - name: Build
               shell: pwsh
