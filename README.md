@@ -9,7 +9,7 @@ SixLabors.SharedInfrastructure
 
 [![Build Status](https://img.shields.io/github/workflow/status/SixLabors/SharedInfrastructure/Build/main)](https://github.com/SixLabors/SharedInfrastructure/actions)
 [![Code coverage](https://codecov.io/gh/SixLabors/SharedInfrastructure/branch/main/graph/badge.svg)](https://codecov.io/gh/SixLabors/SharedInfrastructure)
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: Six Labors Split](https://img.shields.io/badge/license-Six%20Labors%20Split-%23e30183)](https://github.com/SixLabors/ImageSharp/blob/main/LICENSE)
 
 </div>
 

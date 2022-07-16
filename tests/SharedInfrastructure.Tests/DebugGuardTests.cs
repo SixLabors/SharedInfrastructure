@@ -1,5 +1,5 @@
 // Copyright (c) Six Labors.
-// Licensed under the Apache License, Version 2.0.
+// Licensed under the Six Labors Split License.
 
 // tell this file to enable debug conditional method calls, i.e. all the debug guard calls
 #define DEBUG
