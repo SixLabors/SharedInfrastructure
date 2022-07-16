@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="SixLabors.Tests" ToolsVersion="16.0">
+<RuleSet Name="SixLabors.Tests" ToolsVersion="17.0">
   <Include Path="sixlabors.ruleset" Action="Default" />
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
     <Rule Id="CS1591" Action="None" />
