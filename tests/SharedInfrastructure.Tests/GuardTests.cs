@@ -75,7 +75,7 @@ namespace SharedInfrastructure.Tests
             }
         }
 
-        public static readonly TheoryData<int, int, bool> SizeCheckData = new TheoryData<int, int, bool>
+        public static readonly TheoryData<int, int, bool> SizeCheckData = new()
         {
             { 0, 0, false },
             { 1, 1, false },

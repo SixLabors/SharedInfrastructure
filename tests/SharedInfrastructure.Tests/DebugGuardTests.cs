@@ -1,7 +1,7 @@
 // Copyright (c) Six Labors.
 // Licensed under the Six Labors Split License.
 
-// tell this file to enable debug conditional method calls, i.e. all the debug guard calls
+// Tell this file to enable debug conditional method calls, i.e. all the debug guard calls
 #define DEBUG
 
 using System;
@@ -95,7 +95,7 @@ namespace SharedInfrastructure.Tests
             }
         }
 
-        public static readonly TheoryData<int, int, bool> SizeCheckData = new TheoryData<int, int, bool>
+        public static readonly TheoryData<int, int, bool> SizeCheckData = new()
         {
             { 0, 0, false },
             { 1, 1, false },
