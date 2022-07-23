@@ -15,7 +15,7 @@ SixLabors.SharedInfrastructure
 
 This repository contains:
 - Configuration and guidelines for automated linting of C# projects.
-- Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `MathF`, and `HashCode`)
+- Standardized internal C# utility classes to be reused across SixLabors projects (like `Guard`, `DebugGuard`)
 - `SixLabors.snk` to support strong-name signing of SixLabors assemblies
 - Centralized msbuild configuration and utilities for SixLabors projects
 
