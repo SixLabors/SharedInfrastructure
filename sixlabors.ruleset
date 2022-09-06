@@ -6,6 +6,7 @@
     <Rule Id="IDE0072" Action="None" />
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.NetAnalyzers">
+    <Rule Id="CA1069" Action="None" />
     <Rule Id="CA1200" Action="None" />
     <Rule Id="CA1711" Action="None" />
     <Rule Id="CA1716" Action="None" />
@@ -13,6 +14,7 @@
   </Rules>
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp">
     <Rule Id="RCS1090" Action="None" />
+    <Rule Id="RCS1154" Action="None" />
     <Rule Id="RCS1161" Action="None" />
     <Rule Id="RCS1181" Action="None" />
   </Rules>
