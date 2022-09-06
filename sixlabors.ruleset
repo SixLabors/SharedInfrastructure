@@ -6,6 +6,8 @@
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.NetAnalyzers">
     <Rule Id="CA1200" Action="None" />
+    <Rule Id="CA1711" Action="None" />
+    <Rule Id="CA1720" Action="None" />
   </Rules>
   <Rules AnalyzerId="Roslynator.CSharp.Analyzers" RuleNamespace="Roslynator.CSharp">
     <Rule Id="RCS1090" Action="None" />
