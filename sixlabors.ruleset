@@ -17,6 +17,7 @@
     <Rule Id="RCS1154" Action="None" />
     <Rule Id="RCS1161" Action="None" />
     <Rule Id="RCS1181" Action="None" />
+    <Rule Id="RCS1234" Action="None" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA1200" Action="None" />
