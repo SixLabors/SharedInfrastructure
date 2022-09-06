@@ -2,6 +2,7 @@
 <RuleSet Name="SixLabors" ToolsVersion="17.0">
   <Rules AnalyzerId="Microsoft.CodeAnalysis.Features" RuleNamespace="Microsoft.CodeAnalysis.Features">
     <Rule Id="IDE0010" Action="None" />
+    <Rule Id="IDE0047" Action="None" />
     <Rule Id="IDE0072" Action="None" />
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.NetAnalyzers">
