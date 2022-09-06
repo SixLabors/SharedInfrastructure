@@ -8,13 +8,16 @@ using System.Runtime.CompilerServices;
 namespace SixLabors
 {
     /// <summary>
-    /// Helper methods to throw exceptions
+    /// Helper methods to throw exceptions.
     /// </summary>
+#pragma warning disable RCS1043 // Remove 'partial' modifier from type with a single part.
     internal static partial class ThrowHelper
+#pragma warning restore RCS1043 // Remove 'partial' modifier from type with a single part.
     {
         /// <summary>
         /// Throws an <see cref="ArgumentNullException"/> when <see cref="Guard.NotNull{TValue}"/> fails.
         /// </summary>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentNullExceptionForNotNull(string name)
@@ -23,6 +26,8 @@ namespace SixLabors
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> when <see cref="Guard.NotNullOrWhiteSpace"/> fails.
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentExceptionForNotNullOrWhitespace(string value, string name)
@@ -40,6 +45,10 @@ namespace SixLabors
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> when <see cref="Guard.MustBeLessThan{TValue}"/> fails.
         /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="max">The maximum allowable value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeLessThan<T>(T value, T max, string name)
@@ -48,6 +57,10 @@ namespace SixLabors
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> when <see cref="Guard.MustBeLessThanOrEqualTo{TValue}"/> fails.
         /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="maximum">The maximum allowable value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeLessThanOrEqualTo<T>(T value, T maximum, string name)
@@ -56,27 +69,45 @@ namespace SixLabors
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> when <see cref="Guard.MustBeGreaterThan{TValue}"/> fails.
         /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="minimum">The minimum allowable value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan<T>(T value, T minimum, string name) => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than {minimum}, was {value}");
+        public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThan<T>(T value, T minimum, string name)
+            => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than {minimum}, was {value}");
 
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> when <see cref="Guard.MustBeGreaterThanOrEqualTo{TValue}"/> fails.
         /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="minimum">The minimum allowable value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo<T>(T value, T minimum, string name) => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than or equal to {minimum}, was {value}");
+        public static void ThrowArgumentOutOfRangeExceptionForMustBeGreaterThanOrEqualTo<T>(T value, T minimum, string name)
+            => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be greater than or equal to {minimum}, was {value}");
 
         /// <summary>
         /// Throws an <see cref="ArgumentOutOfRangeException"/> when <see cref="Guard.MustBeBetweenOrEqualTo{TValue}"/> fails.
         /// </summary>
+        /// <typeparam name="T">The type of value.</typeparam>
+        /// <param name="value">The value.</param>
+        /// <param name="minimum">The minimum allowable value.</param>
+        /// <param name="maximum">The maximum allowable value.</param>
+        /// <param name="name">The argument name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static void ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo<T>(T value, T minimum, T maximum, string name) => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be between or equal to {minimum} and {maximum}, was {value}");
+        public static void ThrowArgumentOutOfRangeExceptionForMustBeBetweenOrEqualTo<T>(T value, T minimum, T maximum, string name)
+            => ThrowArgumentOutOfRangeException(name, $"Parameter \"{name}\" ({typeof(T)}) must be between or equal to {minimum} and {maximum}, was {value}");
 
         /// <summary>
         /// Throws an <see cref="ArgumentException"/> when <see cref="Guard.MustBeSizedAtLeast{T}(ReadOnlySpan{T},int,string)"/> fails.
         /// </summary>
+        /// <param name="minLength">The minimum allowable length.</param>
+        /// <param name="parameterName">The paramere name.</param>
         [DoesNotReturn]
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(int minLength, string parameterName)

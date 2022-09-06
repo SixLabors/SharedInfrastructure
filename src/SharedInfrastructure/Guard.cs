@@ -24,7 +24,7 @@ namespace SixLabors
         public static void NotNull<TValue>(TValue value, string parameterName)
             where TValue : class
         {
-            if (!(value is null))
+            if (value is not null)
             {
                 return;
             }
