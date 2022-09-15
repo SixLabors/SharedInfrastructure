@@ -27,6 +27,8 @@
     <PackageReference Include="xunit.runner.visualstudio"
                       Version="2.4.3"
                       IsImplicitlyDefined="true" />
+
+    <Using Include="Xunit" Condition="'$(ImplicitUsings)'=='true'"/>
   </ItemGroup>
 
 </Project>

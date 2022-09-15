@@ -19,7 +19,7 @@
     <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
     <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <DefineConstants>$(DefineConstants);ENV_CI</DefineConstants>
   </PropertyGroup>
@@ -73,7 +73,12 @@
     <NullableContextOptions>disable</NullableContextOptions>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <ImplicitUsings>true</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(ImplicitUsings)'=='true'">
+    <Using Include="SixLabors" />
+  </ItemGroup>
 
   <!-- Required restore feeds. -->
   <PropertyGroup>
