@@ -73,10 +73,10 @@
     <NullableContextOptions>disable</NullableContextOptions>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
-    <ImplicitUsings>true</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(ImplicitUsings)'=='true'">
+  <ItemGroup Condition="'$(ImplicitUsings)'=='enable' OR '$(ImplicitUsings)'=='true'" >
     <Using Include="SixLabors" />
   </ItemGroup>
 

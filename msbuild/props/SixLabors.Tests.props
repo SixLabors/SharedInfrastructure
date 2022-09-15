@@ -28,7 +28,7 @@
                       Version="2.4.3"
                       IsImplicitlyDefined="true" />
 
-    <Using Include="Xunit" Condition="'$(ImplicitUsings)'=='true'"/>
+    <Using Include="Xunit" Condition="'$(ImplicitUsings)'=='enable' OR '$(ImplicitUsings)'=='true'"/>
   </ItemGroup>
 
 </Project>
