@@ -2,6 +2,7 @@
 // Licensed under the Six Labors Split License.
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace SixLabors;
@@ -20,16 +21,9 @@ internal static partial class Guard
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void NotNull<TValue>(TValue value, string parameterName)
-        where TValue : class
-    {
-        if (value is not null)
-        {
-            return;
-        }
-
-        ThrowHelper.ThrowArgumentNullExceptionForNotNull(parameterName);
-    }
+    public static void NotNull<TValue>([NotNull]TValue? value, string parameterName)
+        where TValue : class =>
+        ArgumentNullException.ThrowIfNull(value, parameterName);
 
     /// <summary>
     /// Ensures that the target value is not null, empty, or whitespace.
