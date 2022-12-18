@@ -14,20 +14,12 @@ internal static partial class ThrowHelper
 #pragma warning restore RCS1043 // Remove 'partial' modifier from type with a single part.
 {
     /// <summary>
-    /// Throws an <see cref="ArgumentNullException"/> when <see cref="Guard.NotNull{TValue}"/> fails.
-    /// </summary>
-    /// <param name="name">The argument name.</param>
-    [DoesNotReturn]
-    public static void ThrowArgumentNullExceptionForNotNull(string name)
-        => ThrowArgumentNullException(name, $"Parameter \"{name}\" must be not null.");
-
-    /// <summary>
     /// Throws an <see cref="ArgumentException"/> when <see cref="Guard.NotNullOrWhiteSpace"/> fails.
     /// </summary>
     /// <param name="value">The value.</param>
     /// <param name="name">The argument name.</param>
     [DoesNotReturn]
-    public static void ThrowArgumentExceptionForNotNullOrWhitespace(string value, string name)
+    public static void ThrowArgumentExceptionForNotNullOrWhitespace(string? value, string name)
     {
         if (value is null)
         {
