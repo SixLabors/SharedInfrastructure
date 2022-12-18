@@ -21,7 +21,7 @@ internal static partial class Guard
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void NotNull<TValue>([NotNull]TValue? value, string parameterName)
+    public static void NotNull<TValue>([NotNull]TValue? value, [CallerArgumentExpression("value")] string? parameterName = null)
         where TValue : class =>
         ArgumentNullException.ThrowIfNull(value, parameterName);
 
