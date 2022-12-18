@@ -23,28 +23,25 @@ internal static partial class DebugGuard
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     [Conditional("DEBUG")]
-    public static void NotNull<TValue>([NotNull] TValue? value, string parameterName)
+    public static void NotNull<TValue>([NotNull] TValue? value, [CallerArgumentExpression("value")] string? parameterName = null)
         where TValue : class =>
-        ArgumentNullException.ThrowIfNull(value,parameterName);
+        ArgumentNullException.ThrowIfNull(value, parameterName);
 
     /// <summary>
     /// Ensures that the target value is not null, empty, or whitespace.
     /// </summary>
     /// <param name="value">The target string, which should be checked against being null or empty.</param>
-    /// <param name="parameterName">Name of the parameter.</param>
+    /// <param name="paramName">Name of the parameter.</param>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
     [Conditional("DEBUG")]
-    public static void NotNullOrWhiteSpace(string value, string parameterName)
+    public static void NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? paramName = null)
     {
-        if (value is null)
-        {
-            ThrowArgumentNullException(parameterName);
-        }
+        ArgumentNullException.ThrowIfNull(value);
 
         if (string.IsNullOrWhiteSpace(value))
         {
-            ThrowArgumentException("Must not be empty or whitespace.", parameterName);
+            ThrowArgumentException("Must not be empty or whitespace.", paramName!);
         }
     }
 
@@ -151,7 +148,9 @@ internal static partial class DebugGuard
     {
         if (value.CompareTo(min) < 0 || value.CompareTo(max) > 0)
         {
-            ThrowArgumentOutOfRangeException(parameterName, $"Value {value} must be greater than or equal to {min} and less than or equal to {max}.");
+            ThrowArgumentOutOfRangeException(
+                parameterName,
+                $"Value {value} must be greater than or equal to {min} and less than or equal to {max}.");
         }
     }
 
@@ -278,8 +277,4 @@ internal static partial class DebugGuard
     [MethodImpl(MethodImplOptions.NoInlining)]
     private static void ThrowArgumentOutOfRangeException(string parameterName, string message) =>
         throw new ArgumentOutOfRangeException(parameterName, message);
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static void ThrowArgumentNullException(string parameterName) =>
-        throw new ArgumentNullException(parameterName);
 }
