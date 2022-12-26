@@ -7,7 +7,7 @@ SixLabors.SharedInfrastructure
 
 <div align="center">
 
-[![Build Status](https://img.shields.io/github/workflow/actions/status/SixLabors/SharedInfrastructure/build-and-test.yml?branch=main)](https://github.com/SixLabors/SharedInfrastructure/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/SixLabors/SharedInfrastructure/build-and-test.yml?branch=main)](https://github.com/SixLabors/SharedInfrastructure/actions)
 [![Code coverage](https://codecov.io/gh/SixLabors/SharedInfrastructure/branch/main/graph/badge.svg)](https://codecov.io/gh/SixLabors/SharedInfrastructure)
 [![License: Six Labors Split](https://img.shields.io/badge/license-Six%20Labors%20Split-%23e30183)](https://github.com/SixLabors/ImageSharp/blob/main/LICENSE)
 
