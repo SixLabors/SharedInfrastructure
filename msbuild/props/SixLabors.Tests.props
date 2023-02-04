@@ -11,7 +11,7 @@
 
   <!-- Package references and additional files which are consumed by test projects -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-    <PackageReference Include="xunit" Version="2.4.1" IsImplicitlyDefined="true" />
+    <PackageReference Include="xunit" Version="2.4.2" IsImplicitlyDefined="true" />
 
     <PackageReference Include="coverlet.collector"
                       Version="3.1.2"
@@ -20,12 +20,11 @@
                       Condition="'$(IsCodeCoverage)'=='true'"/>
 
     <PackageReference Include="Microsoft.NET.Test.Sdk"
-                      Version="16.8.0"
-                      IsImplicitlyDefined="true"
-                      Condition="'$(TargetFramework)' != 'netcoreapp2.0'"/>
+                      Version="17.4.1"
+                      IsImplicitlyDefined="true"/>
 
     <PackageReference Include="xunit.runner.visualstudio"
-                      Version="2.4.3"
+                      Version="2.4.5"
                       IsImplicitlyDefined="true" />
 
     <Using Include="Xunit" Condition="'$(ImplicitUsings)'=='enable' OR '$(ImplicitUsings)'=='true'"/>
