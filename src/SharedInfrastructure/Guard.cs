@@ -33,7 +33,7 @@ internal static partial class Guard
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void NotNullOrWhiteSpace(string value, string parameterName)
+    public static void NotNullOrWhiteSpace([NotNull]string? value, string parameterName)
     {
         if (!string.IsNullOrWhiteSpace(value))
         {
