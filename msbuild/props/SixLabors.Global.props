@@ -62,7 +62,7 @@
 
   <!-- Compilation settings that explicitly differ from the Sdk.props/targets defaults  -->
   <PropertyGroup>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Features>strict;IOperation</Features>
     <HighEntropyVA>true</HighEntropyVA>
