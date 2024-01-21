@@ -19,11 +19,12 @@
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
 
   <!-- 
     Define Environmental conditionals. Determined by environmental settings set in build-and-test.yml 
-    These proeprties are defined 2X to ensure both MSBuild and Visual Studio (preprocessor directives)
+    These properties are defined 2X to ensure both MSBuild and Visual Studio (preprocessor directives)
     can correctly detect them.
     -->
   <PropertyGroup>

@@ -11,7 +11,7 @@
 
   <!-- Package references and additional files which are consumed by test projects -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-    <PackageReference Include="xunit" Version="2.6.5" IsImplicitlyDefined="true" />
+    <PackageReference Include="xunit" Version="2.6.6" IsImplicitlyDefined="true" />
 
     <PackageReference Include="coverlet.collector"
                       Version="6.0.0"
