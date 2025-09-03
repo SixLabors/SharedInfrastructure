@@ -24,8 +24,6 @@
 
   <!-- 
     Define Environmental conditionals. Determined by environmental settings set in build-and-test.yml 
-    These properties are defined 2X to ensure both MSBuild and Visual Studio (preprocessor directives)
-    can correctly detect them.
     -->
   <PropertyGroup>
     <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
@@ -46,6 +44,19 @@
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerVerbosity>normal</MinVerVerbosity>
   </PropertyGroup>
+
+  <!-- 
+      Package reference to the license project which is consumed by src projects
+      This is a dev only reference. See the SixLabors.Src.targets file for usage.
+   -->
+  <ItemGroup>
+    <PackageReference
+        Include="SixLabors.Licensing"
+        Version="1.0.0"
+        PrivateAssets="all"
+        GeneratePathProperty="true"
+        Condition="'$(PackageId)' != 'SixLabors.Licensing' and '$(MSBuildProjectName)' != 'SixLabors.Licensing'" />
+  </ItemGroup>
 
   <!-- Package references and additional files which are consumed by src projects. CI Only -->
   <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
