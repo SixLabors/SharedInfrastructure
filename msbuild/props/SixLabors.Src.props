@@ -52,7 +52,7 @@
   <ItemGroup>
     <PackageReference
         Include="SixLabors.Licensing"
-        Version="1.0.0"
+        Version="1.0.1"
         PrivateAssets="all"
         GeneratePathProperty="true"
         Condition="'$(PackageId)' != 'SixLabors.Licensing' and '$(MSBuildProjectName)' != 'SixLabors.Licensing'" />
