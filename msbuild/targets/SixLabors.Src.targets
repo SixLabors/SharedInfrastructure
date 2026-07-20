@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <!-- Shared config files that have to exist at root level. -->
-    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes;$(MSBuildThisFileDirectory)..\..\codecov.yml;" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes;$(MSBuildThisFileDirectory)..\..\AGENTS.md;$(MSBuildThisFileDirectory)..\..\CLAUDE.md;$(MSBuildThisFileDirectory)..\..\GEMINI.md;$(MSBuildThisFileDirectory)..\..\codecov.yml;" />
   </ItemGroup>
 
   <!-- Copy the config files on src build. -->
@@ -15,6 +15,9 @@
     <Copy SourceFiles="@(SixLaborsConfigFilesToCopy)"
           SkipUnchangedFiles = "true"
           DestinationFolder="$(SixLaborsSolutionDirectory)" />
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)..\..\.github\copilot-instructions.md"
+          SkipUnchangedFiles="true"
+          DestinationFiles="$(SixLaborsSolutionDirectory).github\copilot-instructions.md" />
   </Target>
 
   <!--
