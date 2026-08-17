@@ -85,10 +85,11 @@ There are three tools contained within the submodule that will help to automatic
 - [.gitattributes](https://git-scm.com/docs/gitattributes)
 - [.editorconfig](https://docs.microsoft.com/en-us/visualstudio/ide/create-portable-custom-editor-options?view=vs-2017)
 - [StyleCop Analyzers](https://github.com/DotNetAnalyzers/StyleCopAnalyzers)  
+
+The build also copies repository-wide AI coding guidance for tools that support `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
   
 These tools are automatically installed into your solution by referencing the `.props` and `.targets` files found in the [/msbuild](/msbuild) folder.
   
 ### MsBuild
 
 Within the aforementioned folder there are separate `.props` and `.targets` files designed for shared, src, and test scenarios. These files control the build process and are responsible for automatically referencing all the required projects for versioning, linting and testing.  An example use case and installation can be found at the [ImageSharp](https://github.com/SixLabors/ImageSharp) repository.
-
