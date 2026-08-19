@@ -11,7 +11,7 @@
 
   <!-- Package references and additional files which are consumed by test projects -->
   <ItemGroup Condition="'$(IsTestProject)' == 'true'">
-    <PackageReference Include="xunit" Version="2.6.6" IsImplicitlyDefined="true" />
+    <PackageReference Include="xunit.v3" Version="3.2.2" IsImplicitlyDefined="true" />
 
     <PackageReference Include="coverlet.collector"
                       Version="6.0.0"
@@ -20,11 +20,11 @@
                       Condition="'$(IsCodeCoverage)'=='true'"/>
 
     <PackageReference Include="Microsoft.NET.Test.Sdk"
-                      Version="17.8.0"
+                      Version="17.12.0"
                       IsImplicitlyDefined="true"/>
 
     <PackageReference Include="xunit.runner.visualstudio"
-                      Version="2.5.6"
+                      Version="3.1.5"
                       IsImplicitlyDefined="true" />
 
     <Using Include="Xunit" Condition="'$(ImplicitUsings)'=='enable' OR '$(ImplicitUsings)'=='true'"/>
