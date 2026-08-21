@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <!--Disable config copy. This solution only.-->
-    <SixLaborsDisableConfigCopy>true</SixLaborsDisableConfigCopy>
+    <SIXLABORS_DISABLE_CONFIG_COPY>true</SIXLABORS_DISABLE_CONFIG_COPY>
   </PropertyGroup>
 
   <!-- Import the shared tests .props file -->

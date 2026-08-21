@@ -11,7 +11,7 @@ namespace SharedInfrastructure.Tests;
 
 public class DebugGuardTests
 {
-    private class Foo
+    private sealed class Foo
     {
     }
 
@@ -31,7 +31,7 @@ public class DebugGuardTests
     [Fact]
     public void NotNull_WhenNull_Throws()
     {
-        Foo foo = null;
+        Foo? foo = null;
         Assert.Throws<ArgumentNullException>(() => Guard.NotNull(foo, nameof(foo)));
     }
 
@@ -48,7 +48,7 @@ public class DebugGuardTests
     [InlineData("  ", true)]
     [InlineData("$", false)]
     [InlineData("lol", false)]
-    public void NotNullOrWhiteSpace(string str, bool shouldThrow)
+    public void NotNullOrWhiteSpace(string? str, bool shouldThrow)
     {
         if (shouldThrow)
         {
@@ -205,13 +205,13 @@ public class DebugGuardTests
     [InlineData(new int[] { 1, 2 }, 1)]
     [InlineData(new int[] { 1, 2 }, 2)]
     public void MustBeSizedAtLeast_Array_LengthIsGreaterOrEqual_ThrowsNoException(int[] value, int minLength)
-        => DebugGuard.MustBeSizedAtLeast<int>(value, minLength, "myParamName");
+        => DebugGuard.MustBeSizedAtLeast(value, minLength, "myParamName");
 
     [Fact]
     public void MustBeSizedAtLeast_Array_LengthIsLess_ThrowsException()
     {
         ArgumentException exception = Assert.Throws<ArgumentException>(
-            () => DebugGuard.MustBeSizedAtLeast<int>(new int[] { 1, 2 }, 3, "myParamName"));
+            static () => DebugGuard.MustBeSizedAtLeast([1, 2], 3, "myParamName"));
 
         Assert.Equal("myParamName", exception.ParamName);
         Assert.Contains("The size must be at least 3.", exception.Message);

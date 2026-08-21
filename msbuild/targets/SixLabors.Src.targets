@@ -7,14 +7,26 @@
 
   <ItemGroup>
     <!-- Shared config files that have to exist at root level. -->
-    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig;$(MSBuildThisFileDirectory)..\..\.gitattributes;$(MSBuildThisFileDirectory)..\..\AGENTS.md;$(MSBuildThisFileDirectory)..\..\CLAUDE.md;$(MSBuildThisFileDirectory)..\..\GEMINI.md;$(MSBuildThisFileDirectory)..\..\codecov.yml;" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.editorconfig" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\.gitattributes" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\AGENTS.md" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\CLAUDE.md" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\GEMINI.md" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\codecov.yml" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\global.json" />
   </ItemGroup>
 
   <!-- Copy the config files on src build. -->
-  <Target Name="SixLaborsCopyConfigFiles" BeforeTargets="Build" Condition="'$(SixLaborsDisableConfigCopy)' == ''">
+  <Target Name="SixLaborsCopyConfigFiles" BeforeTargets="Build" Condition="'$(SIXLABORS_DISABLE_CONFIG_COPY)' == ''">
     <Copy SourceFiles="@(SixLaborsConfigFilesToCopy)"
           SkipUnchangedFiles = "true"
           DestinationFolder="$(SixLaborsSolutionDirectory)" />
+    
+    <!--
+    Copied separately because the file lives in the .github subdirectory. DestinationFolder
+    above flattens everything into the repo root, so this copy uses DestinationFiles with
+    the full target path to keep the subpath intact.
+    -->
     <Copy SourceFiles="$(MSBuildThisFileDirectory)..\..\.github\copilot-instructions.md"
           SkipUnchangedFiles="true"
           DestinationFiles="$(SixLaborsSolutionDirectory).github\copilot-instructions.md" />
@@ -67,8 +79,7 @@
                  and '$(TargetFramework)'!=''
                  and $([System.String]::Copy('$(PackageId)').StartsWith('SixLabors.'))
                  and '$(PackageId)'!='SixLabors.Licensing'
-                 and ( '$(PkgSixLabors_Licensing)'=='' 
-                       or !Exists('$(PkgSixLabors_Licensing)\build\net8.0\SixLabors.Licensing.dll') )">
+                 and ( '$(PkgSixLabors_Licensing)'=='' or !Exists('$(PkgSixLabors_Licensing)\build\net8.0\SixLabors.Licensing.dll') )">
     <Error Text="Licensing task not found under $(PkgSixLabors_Licensing)\build\net8.0. Ensure the dev-only PackageReference (GeneratePathProperty='true') is present and restore ran." />
   </Target>
 

@@ -21,7 +21,7 @@ internal static partial class Guard
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void NotNull<TValue>([NotNull]TValue? value, [CallerArgumentExpression("value")] string? parameterName = null)
+    public static void NotNull<TValue>([NotNull] TValue? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where TValue : class =>
         ArgumentNullException.ThrowIfNull(value, parameterName);
 
@@ -33,7 +33,7 @@ internal static partial class Guard
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void NotNullOrWhiteSpace([NotNull]string? value, string parameterName)
+    public static void NotNullOrWhiteSpace([NotNull] string? value, string parameterName)
     {
         if (!string.IsNullOrWhiteSpace(value))
         {
@@ -222,27 +222,6 @@ internal static partial class Guard
     }
 
     /// <summary>
-    /// Verifies, that the `source` span has the length of 'minLength', or longer.
-    /// </summary>
-    /// <typeparam name="T">The element type of the spans.</typeparam>
-    /// <param name="source">The target span.</param>
-    /// <param name="minLength">The minimum length.</param>
-    /// <param name="parameterName">The name of the parameter that is to be checked.</param>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
-    /// </exception>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void MustBeSizedAtLeast<T>(Span<T> source, int minLength, string parameterName)
-    {
-        if (source.Length >= minLength)
-        {
-            return;
-        }
-
-        ThrowHelper.ThrowArgumentOutOfRangeExceptionForMustBeSizedAtLeast(minLength, parameterName);
-    }
-
-    /// <summary>
     /// Verifies that the 'destination' span is not shorter than 'source'.
     /// </summary>
     /// <typeparam name="TSource">The source element type.</typeparam>
@@ -253,29 +232,7 @@ internal static partial class Guard
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void DestinationShouldNotBeTooShort<TSource, TDest>(
         ReadOnlySpan<TSource> source,
-        Span<TDest> destination,
-        string destinationParamName)
-    {
-        if (destination.Length >= source.Length)
-        {
-            return;
-        }
-
-        ThrowHelper.ThrowArgumentException("Destination span is too short!", destinationParamName);
-    }
-
-    /// <summary>
-    /// Verifies that the 'destination' span is not shorter than 'source'.
-    /// </summary>
-    /// <typeparam name="TSource">The source element type.</typeparam>
-    /// <typeparam name="TDest">The destination element type.</typeparam>
-    /// <param name="source">The source span.</param>
-    /// <param name="destination">The destination span.</param>
-    /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void DestinationShouldNotBeTooShort<TSource, TDest>(
-        Span<TSource> source,
-        Span<TDest> destination,
+        ReadOnlySpan<TDest> destination,
         string destinationParamName)
     {
         if (destination.Length >= source.Length)

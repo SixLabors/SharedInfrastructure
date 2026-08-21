@@ -5,14 +5,14 @@ namespace SharedInfrastructure.Tests;
 
 public class GuardTests
 {
-    private class Foo
+    private sealed class Foo
     {
     }
 
     [Fact]
     public void NotNull_WhenNull_Throws()
     {
-        Foo foo = null;
+        Foo? foo = null;
         Assert.Throws<ArgumentNullException>(() => Guard.NotNull(foo, nameof(foo)));
     }
 
@@ -29,7 +29,7 @@ public class GuardTests
     [InlineData("  ", true)]
     [InlineData("$", false)]
     [InlineData("lol", false)]
-    public void NotNullOrWhiteSpace(string str, bool shouldThrow)
+    public void NotNullOrWhiteSpace(string? str, bool shouldThrow)
     {
         if (shouldThrow)
         {
@@ -205,13 +205,13 @@ public class GuardTests
     [InlineData(2, 1)]
     [InlineData(2, 2)]
     public void MustBeSizedAtLeast_Array_LengthIsGreaterOrEqual_ThrowsNoException(int valueLength, int minLength)
-        => Guard.MustBeSizedAtLeast<int>(new int[valueLength], minLength, "myParamName");
+        => Guard.MustBeSizedAtLeast(new int[valueLength], minLength, "myParamName");
 
     [Fact]
     public void MustBeSizedAtLeast_Array_LengthIsLess_ThrowsException()
     {
         ArgumentException exception =
-            Assert.Throws<ArgumentException>(() => Guard.MustBeSizedAtLeast<int>(new int[] { 1, 2 }, 3, "myParamName"));
+            Assert.Throws<ArgumentException>(() => Guard.MustBeSizedAtLeast([1, 2], 3, "myParamName"));
 
         Assert.Equal("myParamName", exception.ParamName);
         Assert.Contains("Spans must be at least of length 3", exception.Message);
