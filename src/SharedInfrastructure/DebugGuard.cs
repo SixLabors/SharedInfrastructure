@@ -23,7 +23,7 @@ internal static partial class DebugGuard
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     [Conditional("DEBUG")]
-    public static void NotNull<TValue>([NotNull] TValue? value, [CallerArgumentExpression("value")] string? parameterName = null)
+    public static void NotNull<TValue>([NotNull] TValue? value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
         where TValue : class =>
         ArgumentNullException.ThrowIfNull(value, parameterName);
 
@@ -35,7 +35,7 @@ internal static partial class DebugGuard
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="value"/> is empty or contains only blanks.</exception>
     [Conditional("DEBUG")]
-    public static void NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression("value")] string? paramName = null)
+    public static void NotNullOrWhiteSpace([NotNull] string? value, [CallerArgumentExpression(nameof(value))] string? paramName = null)
     {
         ArgumentNullException.ThrowIfNull(value);
 
@@ -207,25 +207,6 @@ internal static partial class DebugGuard
     {
         if (source.Length < minLength)
         {
-            ThrowArgumentException($"Span-s must be at least of length {minLength}!", parameterName);
-        }
-    }
-
-    /// <summary>
-    /// Verifies, that the `source` span has the length of 'minLength', or longer.
-    /// </summary>
-    /// <typeparam name="T">The element type of the spans.</typeparam>
-    /// <param name="source">The target span.</param>
-    /// <param name="minLength">The minimum length.</param>
-    /// <param name="parameterName">The name of the parameter that is to be checked.</param>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="source"/> has less than <paramref name="minLength"/> items.
-    /// </exception>
-    [Conditional("DEBUG")]
-    public static void MustBeSizedAtLeast<T>(Span<T> source, int minLength, string parameterName)
-    {
-        if (source.Length < minLength)
-        {
             ThrowArgumentException($"The size must be at least {minLength}.", parameterName);
         }
     }
@@ -241,27 +222,7 @@ internal static partial class DebugGuard
     [Conditional("DEBUG")]
     public static void DestinationShouldNotBeTooShort<TSource, TDest>(
         ReadOnlySpan<TSource> source,
-        Span<TDest> destination,
-        string destinationParamName)
-    {
-        if (destination.Length < source.Length)
-        {
-            ThrowArgumentException($"Destination span is too short!", destinationParamName);
-        }
-    }
-
-    /// <summary>
-    /// Verifies that the 'destination' span is not shorter than 'source'.
-    /// </summary>
-    /// <typeparam name="TSource">The source element type.</typeparam>
-    /// <typeparam name="TDest">The destination element type.</typeparam>
-    /// <param name="source">The source span.</param>
-    /// <param name="destination">The destination span.</param>
-    /// <param name="destinationParamName">The name of the argument for 'destination'.</param>
-    [Conditional("DEBUG")]
-    public static void DestinationShouldNotBeTooShort<TSource, TDest>(
-        Span<TSource> source,
-        Span<TDest> destination,
+        ReadOnlySpan<TDest> destination,
         string destinationParamName)
     {
         if (destination.Length < source.Length)

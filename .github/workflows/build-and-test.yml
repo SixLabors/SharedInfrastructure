@@ -13,15 +13,31 @@ jobs:
       matrix:
         options:
           - os: ubuntu-latest
-            framework: net8.0
+            framework: net11.0
+            sdk-preview: true
             runtime: -x64
             codecov: false
           - os: macos-latest
-            framework: net8.0
+            framework: net11.0
+            sdk-preview: true
             runtime: -x64
             codecov: false
           - os: windows-latest
-            framework: net8.0
+            framework: net11.0
+            sdk-preview: true
+            runtime: -x64
+            codecov: false
+
+          - os: ubuntu-latest
+            framework: net10.0
+            runtime: -x64
+            codecov: false
+          - os: macos-latest
+            framework: net10.0
+            runtime: -x64
+            codecov: false
+          - os: windows-latest
+            framework: net10.0
             runtime: -x64
             codecov: true
 
@@ -52,19 +68,45 @@ jobs:
           restore-keys: ${{ runner.os }}-nuget-
 
       - name: DotNet Setup
+        if: ${{ matrix.options.sdk-preview != true }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
-            8.0.x
+            10.0.x
+
+      - name: DotNet Setup Preview
+        if: ${{ matrix.options.sdk-preview == true }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-quality: preview
+          dotnet-version: |
+            11.0.x
 
       - name: DotNet Build
+        if: ${{ matrix.options.sdk-preview != true }}
         shell: pwsh
         run: ./ci-build.ps1 "${{matrix.options.framework}}"
 
+      - name: DotNet Build Preview
+        if: ${{ matrix.options.sdk-preview == true }}
+        shell: pwsh
+        run: ./ci-build.ps1 "${{matrix.options.framework}}"
+        env:
+          SIXLABORS_TESTING_PREVIEW: True
+
       - name: DotNet Test
+        if: ${{ matrix.options.sdk-preview != true }}
         shell: pwsh
         run: ./ci-test.ps1 "${{matrix.options.os}}" "${{matrix.options.framework}}" "${{matrix.options.runtime}}" "${{matrix.options.codecov}}"
         env:
+          XUNIT_PATH: .\tests\SharedInfrastructure.Tests # Required for xunit
+
+      - name: DotNet Test Preview
+        if: ${{ matrix.options.sdk-preview == true }}
+        shell: pwsh
+        run: ./ci-test.ps1 "${{matrix.options.os}}" "${{matrix.options.framework}}" "${{matrix.options.runtime}}" "${{matrix.options.codecov}}"
+        env:
+          SIXLABORS_TESTING_PREVIEW: True
           XUNIT_PATH: .\tests\SharedInfrastructure.Tests # Required for xunit
 
       - name: Update Codecov

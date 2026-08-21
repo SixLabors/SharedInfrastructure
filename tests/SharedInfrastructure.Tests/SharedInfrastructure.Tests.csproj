@@ -1,11 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;</TargetFrameworks>
     <AssemblyName>SharedInfrastructure.Tests</AssemblyName>
     <RootNamespace>SharedInfrastructure.Tests</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(SIXLABORS_TESTING_PREVIEW) == true">
+      <PropertyGroup>
+        <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net10.0</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
