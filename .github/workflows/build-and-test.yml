@@ -57,7 +57,7 @@ jobs:
           submodules: recursive
 
       - name: NuGet Install
-        uses: NuGet/setup-nuget@v2
+        uses: NuGet/setup-nuget@v4
 
       - name: NuGet Setup Cache
         uses: actions/cache@v4
