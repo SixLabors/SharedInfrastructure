@@ -89,6 +89,17 @@ There are three tools contained within the submodule that will help to automatic
 The build also copies repository-wide AI coding guidance for tools that support `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md`.
   
 These tools are automatically installed into your solution by referencing the `.props` and `.targets` files found in the [/msbuild](/msbuild) folder.
+
+### .NET SDK Resolution (global.json)
+
+The repository root contains a [global.json](/global.json) that controls .NET SDK resolution for all SixLabors repositories:
+
+- `version` and `rollForward: latestMajor` set a floor of .NET 10. Resolution selects the newest installed SDK at or above that floor.
+- `allowPrerelease: true` lets the CLI and Visual Studio use a preview SDK when one is installed. Machines without a preview SDK resolve the newest stable release.
+
+The build copies this file to consuming repositories together with the other shared config files. Commit the copied file, as you do with `.editorconfig` and `.gitattributes`.
+
+Preview target frameworks are opt-in. Set the `SIXLABORS_TESTING_PREVIEW` environment variable to `True` to add them to `TargetFrameworks`. CI preview lanes set this variable and install the preview SDK with the `dotnet-quality: preview` option of `setup-dotnet`.
   
 ### MsBuild
 
