@@ -13,6 +13,7 @@
     <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\CLAUDE.md" />
     <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\GEMINI.md" />
     <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\codecov.yml" />
+    <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\SECURITY.md" />
     <SixLaborsConfigFilesToCopy Include="$(MSBuildThisFileDirectory)..\..\global.json" />
   </ItemGroup>
 
@@ -59,6 +60,11 @@
         <PackagePath>build\$(PackageId).targets</PackagePath>
       </TfmSpecificPackageFile>
 
+      <!-- SDK 6/7 MSBuild task; newer hosts retain the net8.0 asset below. -->
+      <TfmSpecificPackageFile Include="$(PkgSixLabors_Licensing)\build\net6.0\SixLabors.Licensing.dll"
+                              Condition="Exists('$(PkgSixLabors_Licensing)\build\net6.0\SixLabors.Licensing.dll')">
+        <PackagePath>build\net6.0\SixLabors.Licensing.dll</PackagePath>
+      </TfmSpecificPackageFile>
       <!-- dotnet MSBuild task -->
       <TfmSpecificPackageFile Include="$(PkgSixLabors_Licensing)\build\net8.0\SixLabors.Licensing.dll"
                               Condition="Exists('$(PkgSixLabors_Licensing)\build\net8.0\SixLabors.Licensing.dll')">
