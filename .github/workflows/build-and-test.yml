@@ -57,7 +57,7 @@ jobs:
           submodules: recursive
 
       - name: NuGet Install
-        uses: NuGet/setup-nuget@v2
+        uses: NuGet/setup-nuget@v4
 
       - name: NuGet Setup Cache
         uses: actions/cache@v4
@@ -69,14 +69,14 @@ jobs:
 
       - name: DotNet Setup
         if: ${{ matrix.options.sdk-preview != true }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: |
             10.0.x
 
       - name: DotNet Setup Preview
         if: ${{ matrix.options.sdk-preview == true }}
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-quality: preview
           dotnet-version: |

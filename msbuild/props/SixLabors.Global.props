@@ -115,6 +115,10 @@
 
   <!-- Package references and additional files which are consumed by all projects. -->
   <ItemGroup>
+    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="5.0.1" IsImplicitlyDefined="true">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" IsImplicitlyDefined="true">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

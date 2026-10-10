@@ -18,4 +18,9 @@
   <!-- Import the shared global .props file -->
   <Import Project="$(SixLaborsSolutionDirectory)msbuild\props\SixLabors.Global.props"/>
 
+  <!-- Check shared code under the same Release warning policy as consuming projects. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
 </Project>
